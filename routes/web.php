@@ -34,4 +34,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('site-isolates',SiteIsolateController::class);
     Route::resource('lab-isolates',LaboratoryIsolateController::class);
     Route::get('create-pdf/{isolate_id}',[IsolateController::class,'createPDF']);
+    Route::get('create-pdf-site/{isolate_id}',[IsolateController::class,'createPDFSite']);
 });

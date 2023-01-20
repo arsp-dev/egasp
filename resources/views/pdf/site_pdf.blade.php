@@ -43,7 +43,7 @@
                <table class="table table-condensed table-bordered small" style="font-size: 9px;">
                    <thead>
                        <tr>
-                           <th colspan="8">NAME OF INSTITUTION: {{ Str::of($isolate->hospital->hospital_name)->upper() }}</th>
+                           <th colspan="8">INSTITUTE NAME: {{ Str::of($isolate->hospital->hospital_name)->upper() }}</th>
                            <th class="text-right" colspan="9">EGASP ACCESSION # : {{ $isolate->accession_no }}</th>
                        </tr> 
                        
@@ -84,25 +84,24 @@
                      </tr>
                      
                     <tr>
-                       <td colspan="17">Comments : {{ $isolate->site_isolate->comments }}</td>
+                       <td colspan="17">Comments: {{ $isolate->site_isolate->comments }}</td>
                        {{-- <td colspan="9">Comments (ARSP): {{ $isolate->lab_isolate->comments }}</td> --}}
                      </tr>
                      <tr >
                       <th colspan="2" style="background-color: #D3D3D3; color: black;">CULTURE RESULT</th>
-                      <td colspan="4"><b>Organism({{ $isolate->hospital->hospital_code }}): </b> {!! $isolate->site_isolate->organism_code !!}</td>
-                      <td colspan="4">Beta-lactamase ({{ $isolate->hospital->hospital_code }}): {{ $isolate->site_isolate->beta_lactamase }}</td>
-                      <td colspan="4"><b>Organism(ARSP): </b> {!! $isolate->lab_isolate->organism_code !!}</td>
-                      <td colspan="3">Beta-lactamase (ARSP): {{ $isolate->lab_isolate->beta_lactamase }}</td>
+                      <td colspan="8"><b>Organism: </b> {!! $isolate->site_isolate->organism_code !!}</td>
+                      <td colspan="7">Beta-lactamase: {{ $isolate->site_isolate->beta_lactamase }}</td>
+                      {{-- <td colspan="5">Beta-lactamase (ARSP): {{ $isolate->lab_isolate->beta_lactamase }}</td> --}}
                      </tr>
                     
                     
                   
                      <tr>
-                      <th colspan="2" style="background-color: #D3D3D3; color: black; font-size: 6px;">ANTIMICROBIAL SUSCEPTIBILITY TEST (AST) RESULTS</th>
+                      <th colspan="2" style="background-color: #D3D3D3; color: black; font-size: 5px;">ANTIMICROBIAL SUSCEPTIBILITY TEST (AST) RESULTS</th>
                       <th colspan="15"></th>
                     </tr>
                     <tr align="center">
-                      <td colspan="6" rowspan="5" align="center"> Date of Testing : {{ $isolate->site_isolate->date_of_susceptibility }} <br>  <b>{{ $isolate->hospital->hospital_code }}</b> </td>
+                      <td colspan="6" rowspan="5" align="center"> Date of Testing : {{ $isolate->site_isolate->date_of_susceptibility }}</td>
                       <td colspan="3"> </td>
                       <td>AZM</td>
                       
@@ -215,9 +214,9 @@
                       <td>TET</td>
                      
                     </tr> --}}
-                    <tr align="center">
-                      <td colspan="6" rowspan="4" align="center"> Date of Confirmation : {{ $isolate->lab_isolate->date_of_susceptibility }} <br>  <b>ARSP</b> </td>
-                      <td colspan="3" rowspan="2">Disk (mm)</td>
+                    {{-- <tr align="center">
+                      <td colspan="6" rowspan="4" align="center"> Date of Testing : {{ $isolate->lab_isolate->date_of_susceptibility }} <br>  <b>ARSP</b> </td>
+                      <td colspan="3" rowspan="2">Disk</td>
                       <td >{{ isset($isolate->lab_isolate->azm_disk) ? $isolate->lab_isolate->azm_disk  : '' }}</td>
                    
 
@@ -250,7 +249,7 @@
                       <td>{{ isset($isolate->lab_isolate->tcy_disk_ris) ? $isolate->lab_isolate->tcy_disk_ris  : '' }}</td>
                     </tr>
                     <tr align="center">
-                      <td colspan="3" rowspan="2">MIC (ug/ml)</td>
+                      <td colspan="3" rowspan="2">MIC</td>
                       <td>{{ isset($isolate->lab_isolate->azm_mic) ? $isolate->lab_isolate->azm_mic  : '' }}</td>
                       <td> {{ isset($isolate->lab_isolate->gen_mic) ? $isolate->lab_isolate->gen_mic  : '' }}</td>
                       <td> {{ isset($isolate->lab_isolate->cfm_mic) ? $isolate->lab_isolate->cfm_mic  : '' }}</td>
@@ -287,7 +286,7 @@
 
                       
                       <td>{{ isset($isolate->lab_isolate->tcy_mic_ris) ? $isolate->lab_isolate->tcy_mic_ris  : '' }}</td>
-                    </tr>
+                    </tr> --}}
 
                       <tr>
                         <th colspan="2" style="background-color: #D3D3D3; color: black;">LABORATORY PERSONNEL</th>
@@ -582,8 +581,8 @@
                   <tr>
                    <td style="border: none;"> </td>
                     <td style="border: none;">Date Released: <br><br> {{ $date_now }} </td>
-                    <td style="border: none;">Verified By: <br><br> Marietta M. Lagrada </td>
-                    <td style="border: none;">Noted By: <br><br> Sonia B. Sia, MD</td>
+                    <td style="border: none;">_________________ <br><br> Medical Technologist </td>
+                    <td style="border: none;">_________________ <br><br> Pathologist</td>
                   </tr>
                  </table>
                  <table style="border: none; font-size: 9px; padding: 1px;">

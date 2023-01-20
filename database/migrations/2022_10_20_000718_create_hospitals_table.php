@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->text('hospital_name');
+            $table->text('hospital_code');
             $table->timestamps();
         });
     }

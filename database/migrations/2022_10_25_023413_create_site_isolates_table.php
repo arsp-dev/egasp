@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('site_isolates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('isolate_id')->constrained();
+            $table->text('referral_date')->nullable();
             $table->text('patient_id')->nullable();
             $table->text('patient_first_name')->nullable();
             $table->text('patient_middle_name')->nullable();
@@ -34,6 +35,7 @@ return new class extends Migration
             $table->text('epi_cells')->nullable();
             $table->text('intracellular_diplococci')->nullable();
             $table->text('extracellular_diplococci')->nullable();
+            $table->text('gram_stain_comment')->nullable();
             $table->text('date_of_susceptibility')->nullable();
             $table->text('azm_disk')->nullable();
             $table->text('azm_disk_ris')->nullable();

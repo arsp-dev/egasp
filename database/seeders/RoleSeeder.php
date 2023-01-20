@@ -48,7 +48,8 @@ class RoleSeeder extends Seeder
         ]);
 
         $s_admin->hospital()->create([
-            'hospital_name' => 'Research Institute for Tropical Medicine'
+            'hospital_name' => 'Research Institute for Tropical Medicine',
+            'hospital_code' => 'dev'
             ]);
        $s_admin->assignRole($super_admin);
 
@@ -59,7 +60,8 @@ class RoleSeeder extends Seeder
          ]);
     
         $laboratory->hospital()->create([
-        'hospital_name' => 'Research Institute for Tropical Medicine'
+        'hospital_name' => 'Research Institute for Tropical Medicine',
+        'hospital_code' => 'ARSLAB'
         ]);
 
         $laboratory->assignRole($admin);
@@ -73,12 +75,13 @@ class RoleSeeder extends Seeder
         $dmc->assignRole($sentinel_site);
 
         $dmc->hospital()->create([
-            'hospital_name' => 'Southern Philippines Medical Center'
+            'hospital_name' => 'Southern Philippines Medical Center',
+            'hospital_code' => 'DMC'
         ]);
 
 
         $vsm = User::create([
-            'name' => 'DMC',
+            'name' => 'VSM',
             'email' => 'vsm@arsp.com.ph',
             'password' => Hash::make('@rsp@rsp1111'),
             ]);
@@ -86,7 +89,8 @@ class RoleSeeder extends Seeder
             $vsm->assignRole($sentinel_site);
     
             $vsm->hospital()->create([
-                'hospital_name' => 'Vicente Sotto Memorial Medical Center'
+                'hospital_name' => 'Vicente Sotto Memorial Medical Center',
+                'hospital_code' => 'VSM'
             ]);
 
         
