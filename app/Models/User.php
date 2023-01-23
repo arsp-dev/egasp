@@ -23,6 +23,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'personnel_name',
+        'personnel_email',
+        'personnel_contact',
+        'hospital_id',
     ];
 
     /**
@@ -45,8 +49,8 @@ class User extends Authenticatable
     ];
 
 
-    public function hospital()
+    public function personnel()
     {
-        return $this->hasOne(Hospital::class);
+        return $this->hasOne(Personnel::class);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Isolate;
+use App\Models\Hospital;
 use App\Models\SiteIsolate;
 use Illuminate\Http\Request;
 
@@ -36,9 +38,10 @@ class SiteIsolateController extends Controller
     public function store(Request $request)
     {
         // dd($request->except(['_token','accession_no','isolate_id']));
-        $site_isolate = SiteIsolate::updateOrCreate(['isolate_id' => $request->isolate_id],$request->except(['_token','accession_no','isolate_id']));
-
-        return redirect()->back();
+        $site_isolate = SiteIsolate::updateOrCreate(['isolate_id' => $request->isolate_id],$request->except(['_token','accession_no','isolate_id']))->touch();
+        $isolate = Isolate::where('id',$request->isolate_id)->first();
+        $hospital = Hospital::where('id',$isolate->hospital_id)->first();
+        return redirect()->back()->with('alert-success', 'Successfully updated <b>' . $isolate->accession_no . '</b> <br> Sentinel Site : <b>' . $hospital->hospital_name . '</b>');
     }
 
     /**

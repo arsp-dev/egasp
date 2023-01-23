@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Isolate extends Model
 {
@@ -12,6 +13,8 @@ class Isolate extends Model
     protected $fillable = [
         'accession_no',
         'hospital_id',
+        'created_by',
+        'updated_by'
     ];
 
 

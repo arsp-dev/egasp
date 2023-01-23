@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LaboratoryIsolate;
+use App\Models\Isolate;
+use App\Models\Hospital;
 use Illuminate\Http\Request;
+use App\Models\LaboratoryIsolate;
 
 class LaboratoryIsolateController extends Controller
 {
@@ -35,8 +37,10 @@ class LaboratoryIsolateController extends Controller
      */
     public function store(Request $request)
     {
-        $site_isolate = LaboratoryIsolate::updateOrCreate(['isolate_id' => $request->isolate_id],$request->except(['_token','accession_no','isolate_id']));
-
+        $site_isolate = LaboratoryIsolate::updateOrCreate(['isolate_id' => $request->isolate_id],$request->except(['_token','accession_no','isolate_id']))->touch();
+        $isolate = Isolate::where('id',$request->isolate_id)->first();
+        $hospital = Hospital::where('id',$isolate->hospital_id)->first();
+        return redirect()->back()->with('alert-success', 'Successfully updated laboratory isolate with accession :  <b>' . $isolate->accession_no . '</b> <br> Sentinel Site :  <b>' . $hospital->hospital_name . '</b>');
         return redirect()->back();
     }
 

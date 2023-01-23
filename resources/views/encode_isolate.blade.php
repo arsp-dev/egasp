@@ -25,13 +25,13 @@
     <div class="row mb-2">
     <div class="form-group col-md-4">
       <label for="acccession_no">Accession number</label>
-      <input type="text" class="form-control form-control-sm is-valid" name="accession_no" id="acccession_no" placeholder="Accession number" value="{{ $isolate->accession_no }}" autocomplete="off">
+      <input type="text" class="form-control form-control-sm is-valid" name="accession_no" id="acccession_no" placeholder="Accession number" value="{{ $isolate->accession_no }}" autocomplete="off" disabled>
       <input type="hidden" name="isolate_id" value="{{ $isolate->id }}">
     </div>
 
     <div class="form-group col-md-4">
       <label for="referral_date">Referral Date</label>
-      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->referral_date) & $isolate->site_isolate->referral_date != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->referral_date) ? $isolate->site_isolate->referral_date  : '' }}" id="referral_date" name="referral_date" placeholder="Date of Birth (e.g. mm/dd/yyyy)" autocomplete="off">
+      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->referral_date) & $isolate->site_isolate->referral_date != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->referral_date) ? $isolate->site_isolate->referral_date->toDateString()  : '' }}" id="referral_date" name="referral_date" placeholder="Date of Birth (e.g. mm/dd/yyyy)" autocomplete="off">
     </div>
     </div>
     
@@ -43,7 +43,7 @@
     </div>
     <div class="form-group col-md-4">
       <label for="patient_date_of_birth">Date of Birth</label>
-      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->patient_date_of_birth) & $isolate->site_isolate->patient_date_of_birth != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_date_of_birth) ? $isolate->site_isolate->patient_date_of_birth  : '' }}" id="patient_date_of_birth" name="patient_date_of_birth" placeholder="Date of Birth (e.g. mm/dd/yyyy)" autocomplete="off">
+      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->patient_date_of_birth) & $isolate->site_isolate->patient_date_of_birth != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_date_of_birth) ? $isolate->site_isolate->patient_date_of_birth->toDateString()  : '' }}" id="patient_date_of_birth" name="patient_date_of_birth" placeholder="Date of Birth (e.g. mm/dd/yyyy)" autocomplete="off">
     </div>
     <div class="form-group col-md-2">
       <label for="patient_age">Age</label>
@@ -81,11 +81,11 @@
     </div>
     <div class="form-group col-md-4  ">
       <label for="date_collection">Date of Collection</label>
-      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->date_of_collection) & $isolate->site_isolate->date_of_collection != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->date_of_collection) ? $isolate->site_isolate->date_of_collection  : '' }}" id="date_collection" name="date_of_collection" placeholder="Date of Collection (e.g. mm/dd/yyyy)" autocomplete="off">
+      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->date_of_collection) & $isolate->site_isolate->date_of_collection != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->date_of_collection) ? $isolate->site_isolate->date_of_collection->toDateString()  : '' }}" id="date_collection" name="date_of_collection" placeholder="Date of Collection (e.g. mm/dd/yyyy)" autocomplete="off">
     </div>
     <div class="form-group col-md-4  ">
       <label for="date_received">Date received in lab</label>
-      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->date_received_lab) & $isolate->site_isolate->date_received_lab != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->date_received_lab) ? $isolate->site_isolate->date_received_lab  : '' }}" id="date_received" name="date_received_lab" placeholder="Date Received in lab (e.g. mm/dd/yyyy)" autocomplete="off">
+      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->date_received_lab) & $isolate->site_isolate->date_received_lab != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->date_received_lab) ? $isolate->site_isolate->date_received_lab->toDateString()  : '' }}" id="date_received" name="date_received_lab" placeholder="Date Received in lab (e.g. mm/dd/yyyy)" autocomplete="off">
     </div>
     </div>
     <div class="row  ">
@@ -106,7 +106,7 @@
    <div class="row mb-2">
    <div class="form-group col-md-2  ">
       <label for="date_received">Date of Test</label>
-      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->date_of_test) & $isolate->site_isolate->date_of_test != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->date_of_test) ? $isolate->site_isolate->date_of_test  : '' }}" id="date_test" name="date_of_test" placeholder="Date of Test (e.g. mm/dd/yyyy)" autocomplete="off">
+      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->date_of_test) & $isolate->site_isolate->date_of_test != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->date_of_test) ? $isolate->site_isolate->date_of_test->toDateString()  : '' }}" id="date_test" name="date_of_test" placeholder="Date of Test (e.g. mm/dd/yyyy)" autocomplete="off">
     </div>
     <div class="form-group col-md-2  ">
       <label for="pus_cells">Pus Cells</label>
@@ -192,15 +192,15 @@
         <label for="beta_lactamase">Beta-lactamase</label>
         <select class=" form-select form-select-sm {{ isset($isolate->site_isolate->beta_lactamase) & $isolate->site_isolate->beta_lactamase != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="beta_lactamase">
           <option selected> </option>
-          <option {{ isset($isolate->site_isolate->beta_lactamase) & $isolate->site_isolate->beta_lactamase == '+' ? 'selected'  : '' }} value="positive">+</option>
-          <option {{ isset($isolate->site_isolate->beta_lactamase) & $isolate->site_isolate->beta_lactamase == '-' ? 'selected'  : '' }} value="negative">-</option>
+          <option {{ isset($isolate->site_isolate->beta_lactamase) & $isolate->site_isolate->beta_lactamase == 'positive' ? 'selected'  : '' }} value="positive">+</option>
+          <option {{ isset($isolate->site_isolate->beta_lactamase) & $isolate->site_isolate->beta_lactamase == 'negative' ? 'selected'  : '' }} value="negative">-</option>
           <option {{ isset($isolate->site_isolate->beta_lactamase) & $isolate->site_isolate->beta_lactamase == 'not tested' ? 'selected'  : '' }} value="not tested">Not Tested</option>
         </select>
       </div>
     <div class="form-group col-md-4">
       <label for="date_received">Date of Suceptibility Testing</label>
       <div class="input-group date" id="datepicker">
-        <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->date_of_susceptibility) & $isolate->site_isolate->date_of_susceptibility != '' ? 'is-valid' : '' }}"  value="{{ isset($isolate->site_isolate->date_of_susceptibility) ? $isolate->site_isolate->date_of_susceptibility  : '' }}" id="date_test" name='date_of_susceptibility' placeholder="Date of Test (e.g. mm/dd/yyyy)" autocomplete="off">
+        <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->date_of_susceptibility) & $isolate->site_isolate->date_of_susceptibility != '' ? 'is-valid' : '' }}"  value="{{ isset($isolate->site_isolate->date_of_susceptibility) ? $isolate->site_isolate->date_of_susceptibility->toDateString()  : '' }}" id="date_test" name='date_of_susceptibility' placeholder="Date of Test (e.g. mm/dd/yyyy)" autocomplete="off">
       </div>
       
     </div>
@@ -397,7 +397,7 @@
 <div class="card mb-2">
   <div class="card-header text-white" style="background-color: #198754"><h4>Laboratory Pernsonnel Section</h4></div>
 
-  <div class="card-body"> 
+  <div class="card-body">
     <div class="row mb-2">
     <div class="form-group col-md-3">
       <label for="laboratory_personnel">Laboratory Personnel</label>
@@ -413,7 +413,7 @@
     </div>
     <div class="form-group col-md-3">
       <label for="date_accomplished">Date Accomlished</label>
-      <input type="date"class="form-control form-control-sm {{ isset($isolate->site_isolate->date_accomplished) & $isolate->site_isolate->date_accomplished != '' ? 'is-valid' : '' }}"  value="{{ isset($isolate->site_isolate->date_accomplished) ? $isolate->site_isolate->date_accomplished  : '' }}" id="date_accomplished" name="date_accomplished" placeholder="Date Accomplished (e.g. mm/dd/yyyy)">
+      <input type="date"class="form-control form-control-sm {{ isset($isolate->site_isolate->date_accomplished) & $isolate->site_isolate->date_accomplished != '' ? 'is-valid' : '' }}"  value="{{ isset($isolate->site_isolate->date_accomplished) ? $isolate->site_isolate->date_accomplished->toDateString()  : '' }}" id="date_accomplished" name="date_accomplished" placeholder="Date Accomplished (e.g. mm/dd/yyyy)">
     </div>
     </div>
     <div class="row  mb-2">

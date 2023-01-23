@@ -58,7 +58,7 @@
                        <td colspan="3">First Name: {{ $isolate->site_isolate->patient_first_name }}</td>
                        <td colspan="3">Middle Name: {{ $isolate->site_isolate->patient_middle_name }}</td>
                        <td colspan="3">Last Name: {{ $isolate->site_isolate->patient_last_name }}</td>
-                       <td colspan="1">Date of Birth: {{ $isolate->site_isolate->patient_date_of_birth }}</td>
+                       <td colspan="1">Date of Birth: {{ isset($isolate->site_isolate->patient_date_of_birth) ? $isolate->site_isolate->patient_date_of_birth->format('m/d/Y') : '' }}</td>
                        <td colspan="1">Age: {{ $isolate->site_isolate->patient_age }}</td>
                        <td colspan="1">Sex: {{ $isolate->site_isolate->patient_sex }}</td>
                      </tr>
@@ -67,16 +67,16 @@
                      <tr>
                       <th colspan="2" style="background-color: #D3D3D3; color: black;">ISOLATE INFORMATION</th>
                        <td colspan="3">Specimen Type: {{ $isolate->site_isolate->anatomic_collection }}</td>
-                       <td colspan="3">Date of Collection: {{ $isolate->site_isolate->date_of_collection }}</td>
-                       <td colspan="3">Date received in lab: {{ $isolate->site_isolate->date_received_lab }}</td>
-                       <td colspan="3">Referral Date: {{ $isolate->site_isolate->referral_date }}</td>
+                       <td colspan="3">Date of Collection: {{ isset($isolate->site_isolate->date_of_collection) ? $isolate->site_isolate->date_of_collection->format('m/d/Y') : '' }}</td>
+                       <td colspan="3">Date received in lab: {{ isset($isolate->site_isolate->date_received_lab) ? $isolate->site_isolate->date_received_lab->format('m/d/Y') : '' }}</td>
+                       <td colspan="3">Referral Date: {{ isset($isolate->site_isolate->referral_date) ? $isolate->site_isolate->referral_date->format('m/d/Y') : '' }}</td>
                        <td colspan="3">Reason for Referral : {{ $isolate->site_isolate->reason_for_referral }}</td>
                      </tr>
                     
                      <tr >
                       <th colspan="2" style="background-color: #D3D3D3; color: black;">MICROSCOPIC EXAMINATION</th>
                       <th colspan="3">GRAM STAIN RESULT</th>
-                      <td colspan="2">Date of test: {{ $isolate->site_isolate->date_of_test }}</td>
+                      <td colspan="2">Date of test: {{ isset($isolate->site_isolate->date_of_test) ? $isolate->site_isolate->date_of_test->format('m/d/Y') : '' }}</td>
                       <td colspan="2">Pus Cells: {{ $isolate->site_isolate->pus_cells }}</td>
                       <td colspan="2">Epithelial Cells: {{ $isolate->site_isolate->epi_cells }}</td>
                       <td colspan="3" style="font-size: 8px;">Gram Negative Intracellular Diplococci : {{ $isolate->site_isolate->intracellular_diplococci }}</td>
@@ -101,7 +101,7 @@
                       <th colspan="15"></th>
                     </tr>
                     <tr align="center">
-                      <td colspan="6" rowspan="5" align="center"> Date of Testing : {{ $isolate->site_isolate->date_of_susceptibility }}</td>
+                      <td colspan="6" rowspan="5" align="center"> Date of Testing : {{ isset($isolate->site_isolate->date_of_susceptibility) ? $isolate->site_isolate->date_of_susceptibility->format('m/d/Y') : '' }}</td>
                       <td colspan="3"> </td>
                       <td>AZM</td>
                       
@@ -293,7 +293,7 @@
                         <td colspan="3">Name of Staff: {{ $isolate->site_isolate->laboratory_personnel }}</td>
                         <td colspan="4">Email Address: {{ $isolate->site_isolate->laboratory_personnel_email }}</td>
                         <td colspan="4">Contact Number: {{ $isolate->site_isolate->laboratory_personnel_contact }}</td>
-                        <td colspan="4">Date Accomplished: {{ $isolate->site_isolate->date_accomplished }}</td>
+                        <td colspan="4">Date Accomplished: {{ isset($isolate->site_isolate->date_accomplished) ? $isolate->site_isolate->date_accomplished->format('m/d/Y') : '' }}</td>
                       </tr>
                       <tr>
                         <td colspan="17">Notes: {{ $isolate->site_isolate->notes }}</td>

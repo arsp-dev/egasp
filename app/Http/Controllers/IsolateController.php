@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Isolate;
+use App\Models\Hospital;
+use App\Models\Personnel;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreIsolateRequest;
-use App\Models\Hospital;
-use Barryvdh\DomPDF\Facade\Pdf;
-use Carbon\Carbon;
 
 class IsolateController extends Controller
 {
@@ -26,7 +27,7 @@ class IsolateController extends Controller
         }
            
         else{
-            $isolates = Isolate::where('hospital_id',Auth::user()->hospital->id)->with('site_isolate')->get();
+            $isolates = Isolate::where('hospital_id',Auth::user()->personnel->hospital->id)->with('site_isolate')->get();
             return view('all_isolates')->with(['isolates' => $isolates]);
         }
     }
@@ -70,15 +71,21 @@ class IsolateController extends Controller
      */
     public function show(Isolate $isolate)
     {
-        if(Auth::user()->hospital->id == $isolate->hospital_id)
+        if(Auth::user()->personnel->hospital_id == $isolate->hospital_id)
         {
             $isolate = Isolate::where('id',$isolate->id)->with('site_isolate')->first();
             return view('encode_isolate',compact('isolate'));
         }
 
-        if(Auth::user()->hasRole(['admin', 'Super-Admin'])){
+        if(Auth::user()->hasRole(['admin'])){
             $isolate = Isolate::where('id',$isolate->id)->with('lab_isolate','site_isolate')->first();
             return view('encode_isolate_laboratory',compact('isolate'));
+        }
+
+
+        if(Auth::user()->hasRole(['Super-Admin'])){
+            $isolate = Isolate::where('id',$isolate->id)->with('lab_isolate','site_isolate')->first();
+            return view('encode_isolate_dev',compact('isolate'));
         }
 
         return redirect()->route('isolates.index')->with(['info' => 'You are not authorized to get information from that isolate.']);
@@ -125,11 +132,11 @@ class IsolateController extends Controller
     public function createPDF(Request $request,$isolate_id)
     {
         $isolate = Isolate::where('id',$isolate_id)->with('lab_isolate','site_isolate','hospital')->first();
-        $hospital = Hospital::where('user_id',Auth::user()->id)->first();
+        // $hospital = Personnel::where('user_id',Auth::user()->id)->with('hospital')->first();
         $date_now = Carbon::now()->isoFormat('MM/DD/YYYY');
         // dd($isolate);
 
-        $pdf = PDF::loadView('pdf.pdf',compact('isolate','hospital','date_now'))->setPaper('a4','landscape');
+        $pdf = PDF::loadView('pdf.pdf',compact('isolate','date_now'))->setPaper('a4','landscape');
 
         return $pdf->download($isolate->accession_no . '-' .Carbon::now()->toDayDateTimeString() .  '.pdf');
 
@@ -139,11 +146,11 @@ class IsolateController extends Controller
     public function createPDFSite(Request $request,$isolate_id)
     {
         $isolate = Isolate::where('id',$isolate_id)->with('lab_isolate','site_isolate','hospital')->first();
-        $hospital = Hospital::where('user_id',Auth::user()->id)->first();
+        // $hospital =  Personnel::where('user_id',Auth::user()->id)->with('hospital')->first();
         $date_now = Carbon::now()->isoFormat('MM/DD/YYYY');
         // dd($isolate);
 
-        $pdf = PDF::loadView('pdf.site_pdf',compact('isolate','hospital','date_now'))->setPaper('a4','landscape');
+        $pdf = PDF::loadView('pdf.site_pdf',compact('isolate','date_now'))->setPaper('a4','landscape');
 
         return $pdf->download($isolate->accession_no . '-' .Carbon::now()->toDayDateTimeString() .  '.pdf');
 

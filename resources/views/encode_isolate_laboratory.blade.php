@@ -22,7 +22,7 @@
     <div class="row">
     <div class="form-group col-md-4 mb-3">
       <label for="acccession_no">Accession number</label>
-      <input type="text" class="form-control is-valid" name="accession_no" id="acccession_no" placeholder="Accession number" value="{{ $isolate->accession_no }}">
+      <input type="text" class="form-control is-valid" name="accession_no" id="acccession_no" placeholder="Accession number" value="{{ $isolate->accession_no }}" disabled>
       <input type="hidden" name="isolate_id" value="{{ $isolate->id }}">
     </div>
     <div class="col-md-4"> </div>
@@ -59,7 +59,7 @@
                       <td>Last Name: {{ $isolate->site_isolate->patient_last_name }}</td>
                     </tr>
                     <tr>
-                      <td colspan="2">Date of Birth: {{ $isolate->site_isolate->patient_date_of_birth }}</td>
+                      <td colspan="2">Date of Birth: {{ isset($isolate->site_isolate->patient_date_of_birth) ? $isolate->site_isolate->patient_date_of_birth->format('m/d/Y') : '' }}</td>
                       <td>Age: {{ $isolate->site_isolate->patient_age }}</td>
                       <td>Sex: {{ $isolate->site_isolate->patient_sex }}</td>
               
@@ -69,13 +69,13 @@
                     </tr>
                     <tr>
                       <td>Anatomic Site of Collection: {{ $isolate->site_isolate->anatomic_collection }}</td>
-                      <td>Date of Collection: {{ $isolate->site_isolate->date_of_collection }}</td>
-                      <td>Referral Date: {{ $isolate->site_isolate->referral_date }}</td>
+                      <td>Date of Collection: {{ isset($isolate->site_isolate->date_of_collection) ? $isolate->site_isolate->date_of_collection->format('m/d/Y') : '' }}</td>
+                      <td>Referral Date: {{ isset($isolate->site_isolate->referral_date) ? $isolate->site_isolate->referral_date->format('m/d/Y') : '' }}</td>
                       <td colspan="2">Reason for Referral : {{ $isolate->site_isolate->reason_for_referral }}</td>
                     </tr>
                     <tr>
                       <td colspan="2">Organism Code: {!! $isolate->site_isolate->organism_code !!}</td>
-                      <td colspan="2">Date received in lab: {{ $isolate->site_isolate->date_received_lab }}</td>
+                      <td colspan="2">Date received in lab: {{ isset($isolate->site_isolate->date_received_lab) ? $isolate->site_isolate->date_received_lab->format('m/d/Y') : '' }}</td>
                     </tr>
                     <tr>
                       <th colspan="4">PHENOTYPIC TESTS</th>
@@ -87,7 +87,7 @@
                       <th colspan="4">GRAM STAIN RESULTS</th>
                     </tr>
                     <tr>
-                      <td colspan="2">Date of test: {{ $isolate->site_isolate->date_of_test }}</td>
+                      <td colspan="2">Date of test: {{ isset($isolate->site_isolate->date_of_test) ? $isolate->site_isolate->date_of_test->format('m/d/Y') : '' }}</td>
                       <td>Pus Cells: {{ $isolate->site_isolate->pus_cells }}</td>
                       <td>Gram Negative Intracellular Diplococci : {{ $isolate->site_isolate->intracellular_diplococci }}</td>
                     </tr>
@@ -181,7 +181,7 @@
                                   </tr>
                                   <tr>
                                     <td colspan="2">Contact Number: {{ $isolate->site_isolate->laboratory_personnel_contact }}</td>
-                                    <td colspan="2">Date Accomplished: {{ $isolate->site_isolate->date_accomplished }}</td>
+                                    <td colspan="2">Date Accomplished: {{ isset($isolate->site_isolate->date_accomplished) ? $isolate->site_isolate->date_accomplished->format('m/d/Y') : '' }}</td>
                                   </tr>
                                   <tr>
                                     <td colspan="4">Notes: {{ $isolate->site_isolate->notes }}</td>
@@ -204,25 +204,37 @@
 
     {{-- $isolate->lab_isolate->beta_lactamase --}}
     <hr>
-    <div class="form-group col-md-4">
-      <label for="organism_code">Organism Code</label>
-      {{-- <input type="text" class="form-control form-control-sm {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->organism_code) ? $isolate->site_isolate->organism_code  : '' }}" id="organism_code" name="organism_code" placeholder="Organism Code"> --}}
-      <select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="organism_code" >
-        <option selected> </option>
-        <option {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code == '<i>Neisseria gonorrhoeae</i>' ? 'selected'  : '' }} value="<i>Neisseria gonorrhoeae</i>">ngo</option>
-        <option {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code == '<i>Haemophilus influenzae</i>' ? 'selected'  : '' }} value="<i>Haemophilus influenzae</i>">hin</option>
-        <option {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code == '<i>Haemophilus parainfluenzae</i>' ? 'selected'  : '' }} value="<i>Haemophilus parainfluenzae</i>">hpi</option>
-        <option {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code == '<i>Neisseria meningitidis</i>' ? 'selected'  : '' }} value="<i>Neisseria meningitidis</i>">nme</option>
-        <option {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code == 'No Growth' ? 'selected'  : '' }} value="No Growth">xxx</option>
-        <option {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code == 'No <i>Neisseria gonorrhoeae</i> found' ? 'selected'  : '' }} value="No <i>Neisseria gonorrhoeae</i> found">xgo</option>
-      </select>
+    <div class="row">
+      <div class="form-group col-md-4">
+        <label for="organism_code">Organism Code</label>
+        {{-- <input type="text" class="form-control form-control-sm {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->organism_code) ? $isolate->site_isolate->organism_code  : '' }}" id="organism_code" name="organism_code" placeholder="Organism Code"> --}}
+        <select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="organism_code" >
+          <option selected> </option>
+          <option {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code == '<i>Neisseria gonorrhoeae</i>' ? 'selected'  : '' }} value="<i>Neisseria gonorrhoeae</i>">ngo</option>
+          <option {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code == '<i>Haemophilus influenzae</i>' ? 'selected'  : '' }} value="<i>Haemophilus influenzae</i>">hin</option>
+          <option {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code == '<i>Haemophilus parainfluenzae</i>' ? 'selected'  : '' }} value="<i>Haemophilus parainfluenzae</i>">hpi</option>
+          <option {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code == '<i>Neisseria meningitidis</i>' ? 'selected'  : '' }} value="<i>Neisseria meningitidis</i>">nme</option>
+          <option {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code == 'No Growth' ? 'selected'  : '' }} value="No Growth">xxx</option>
+          <option {{ isset($isolate->lab_isolate->organism_code) & $isolate->lab_isolate->organism_code == 'No <i>Neisseria gonorrhoeae</i> found' ? 'selected'  : '' }} value="No <i>Neisseria gonorrhoeae</i> found">xgo</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4 ">
+        <label for="beta_lactamase">Beta-lactamase</label>
+        <select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->beta_lactamase) & $isolate->lab_isolate->beta_lactamase != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="beta_lactamase">
+          <option selected> </option>
+          <option {{ isset($isolate->lab_isolate->beta_lactamase) & $isolate->lab_isolate->beta_lactamase == 'positive' ? 'selected'  : '' }} value="positive">+</option>
+          <option {{ isset($isolate->lab_isolate->beta_lactamase) & $isolate->lab_isolate->beta_lactamase == 'negative' ? 'selected'  : '' }} value="negative">-</option>
+          <option {{ isset($isolate->lab_isolate->beta_lactamase) & $isolate->lab_isolate->beta_lactamase == 'not tested' ? 'selected'  : '' }} value="not tested">Not Tested</option>
+        </select>
+      </div>
     </div>
+  
 
    <hr>
     <div class="row">
     <div class="form-group col-md-6 mb-3">
       <label for="date_received">Date of Suceptibility Testing</label>
-      <input type="text" class="form-control {{ isset($isolate->lab_isolate->date_of_susceptibility) & $isolate->lab_isolate->date_of_susceptibility != '' ? 'is-valid' : '' }}"  value="{{ isset($isolate->lab_isolate->date_of_susceptibility) ? $isolate->lab_isolate->date_of_susceptibility  : '' }}" id="date_test" name='date_of_susceptibility' placeholder="Date of Test (e.g. mm/dd/yyyy)">
+      <input type="date" class="form-control {{ isset($isolate->lab_isolate->date_of_susceptibility) & $isolate->lab_isolate->date_of_susceptibility != '' ? 'is-valid' : '' }}"  value="{{ isset($isolate->lab_isolate->date_of_susceptibility) ? $isolate->lab_isolate->date_of_susceptibility->toDateString()  : '' }}" id="date_test" name='date_of_susceptibility' placeholder="Date of Test (e.g. mm/dd/yyyy)">
     </div>
     </div>
     <div class="row">

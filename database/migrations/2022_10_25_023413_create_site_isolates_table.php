@@ -16,27 +16,27 @@ return new class extends Migration
         Schema::create('site_isolates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('isolate_id')->constrained();
-            $table->text('referral_date')->nullable();
+            $table->date('referral_date')->nullable();
             $table->text('patient_id')->nullable();
             $table->text('patient_first_name')->nullable();
             $table->text('patient_middle_name')->nullable();
             $table->text('patient_last_name')->nullable();
-            $table->text('patient_date_of_birth')->nullable();
+            $table->date('patient_date_of_birth')->nullable();
             $table->text('patient_age')->nullable();
             $table->text('patient_sex')->nullable();
             $table->text('anatomic_collection')->nullable();
-            $table->text('date_of_collection')->nullable();
-            $table->text('date_received_lab')->nullable();
+            $table->date('date_of_collection')->nullable();
+            $table->date('date_received_lab')->nullable();
             $table->text('reason_for_referral')->nullable();
             $table->text('organism_code')->nullable();
             $table->text('beta_lactamase')->nullable();
-            $table->text('date_of_test')->nullable();
+            $table->date('date_of_test')->nullable();
             $table->text('pus_cells')->nullable();
             $table->text('epi_cells')->nullable();
             $table->text('intracellular_diplococci')->nullable();
             $table->text('extracellular_diplococci')->nullable();
             $table->text('gram_stain_comment')->nullable();
-            $table->text('date_of_susceptibility')->nullable();
+            $table->date('date_of_susceptibility')->nullable();
             $table->text('azm_disk')->nullable();
             $table->text('azm_disk_ris')->nullable();
             $table->text('azm_mic')->nullable();
@@ -73,8 +73,13 @@ return new class extends Migration
             $table->text('laboratory_personnel')->nullable();
             $table->text('laboratory_personnel_email')->nullable();
             $table->text('laboratory_personnel_contact')->nullable();
-            $table->text('date_accomplished')->nullable();
+            $table->date('date_accomplished')->nullable();
             $table->text('notes')->nullable();
+
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by');
+            $table->foreign('created_by')->references('id')->on('users')->unsigned();
+            $table->foreign('updated_by')->references('id')->on('users')->unsigned();
             $table->timestamps();
         });
     }

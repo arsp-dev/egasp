@@ -11,6 +11,17 @@ class SiteIsolate extends Model
 
     protected $guarded = [];
 
+    protected $dates = [
+        'referral_date',
+        'patient_date_of_birth',
+        'date_of_collection',
+        'date_received_lab',
+        'date_of_test',
+        'date_of_susceptibility',
+        'date_accomplished',
+    ];
+
+
 
     public function site_isolate()
     {

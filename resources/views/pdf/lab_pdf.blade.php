@@ -52,7 +52,7 @@
                        <td>Last Name: {{ $isolate->site_isolate->patient_last_name }}</td>
                      </tr>
                      <tr>
-                       <td colspan="2">Date of Birth: {{ $isolate->site_isolate->patient_date_of_birth }}</td>
+                       <td colspan="2">Date of Birth: {{ $isolate->site_isolate->patient_date_of_birth->format('m/d/Y') }}</td>
                        <td>Age: {{ $isolate->site_isolate->patient_age }}</td>
                        <td>Sex: {{ $isolate->site_isolate->patient_sex }}</td>
                
@@ -62,12 +62,12 @@
                      </tr>
                      <tr>
                        <td>Anatomic Site of Collection: {{ $isolate->site_isolate->anatomic_collection }}</td>
-                       <td>Date of Collection: {{ $isolate->site_isolate->date_of_collection }}</td>
+                       <td>Date of Collection: {{ $isolate->site_isolate->date_of_collection->format('m/d/Y') }}</td>
                        <td colspan="2">Reason for Referral : {{ $isolate->site_isolate->reason_for_referral }}</td>
                      </tr>
                      <tr>
                        <td colspan="2">Organism Code: {{ $isolate->site_isolate->organism_code }}</td>
-                       <td colspan="2">Date received in lab: {{ $isolate->site_isolate->date_received_lab }}</td>
+                       <td colspan="2">Date received in lab: {{ $isolate->site_isolate->date_received_lab->format('m/d/Y') }}</td>
                      </tr>
                      <tr>
                        <th colspan="4">Phenotypic Tests</th>
@@ -80,7 +80,7 @@
                        <th colspan="4">Gram Stain Results</th>
                      </tr>
                      <tr>
-                       <td colspan="2">Date of test: {{ $isolate->site_isolate->date_of_test }}</td>
+                       <td colspan="2">Date of test: {{ $isolate->site_isolate->date_of_test->format('m/d/Y') }}</td>
                        <td>Pus Cells: {{ $isolate->site_isolate->pus_cells }}</td>
                        <td>Gram Negative Intracellular Diplococci : {{ $isolate->site_isolate->intracellular_diplococci }}</td>
                      </tr>
@@ -102,7 +102,7 @@
                       </tr>
                       <tr>
                         <td colspan="2">Contact Number: {{ $isolate->site_isolate->laboratory_personnel_contact }}</td>
-                        <td colspan="2">Date Accomplished: {{ $isolate->site_isolate->date_accomplished }}</td>
+                        <td colspan="2">Date Accomplished: {{ $isolate->site_isolate->date_accomplished->format('m/d/Y') }}</td>
                       </tr>
                       <tr>
                         <td colspan="4">Notes: {{ $isolate->site_isolate->notes }}</td>
@@ -116,8 +116,8 @@
                             <th colspan="9">ANTIMICROBIAL SUSCEPTIBILITY RESULTS</th>
                         </tr>
                         <tr>
-                            <th colspan="5">Date of Susceptibility Testing (Sentinel Site): {{ $isolate->site_isolate->date_of_susceptibility }}</th>
-                            <th colspan="4">Date of Susceptibility Testing (ARSP Lab): {{ $isolate->lab_isolate->date_of_susceptibility }}</th>
+                            <th colspan="5">Date of Susceptibility Testing (Sentinel Site): {{ $isolate->site_isolate->date_of_susceptibility->format('m/d/Y') }}</th>
+                            <th colspan="4">Date of Susceptibility Testing (ARSP Lab): {{ $isolate->lab_isolate->date_of_susceptibility->format('m/d/Y')e }}</th>
                         </tr>
                       <tr >
                         <td>Antibiotic</td>

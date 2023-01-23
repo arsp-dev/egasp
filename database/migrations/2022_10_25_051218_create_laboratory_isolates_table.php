@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('isolate_id')->constrained();
             $table->text('organism_code')->nullable();
             $table->text('beta_lactamase')->nullable();
-            $table->text('date_of_susceptibility')->nullable();
+            $table->date('date_of_susceptibility')->nullable();
             $table->text('azm_disk')->nullable();
             $table->text('azm_disk_ris')->nullable();
             $table->text('azm_mic')->nullable();
@@ -52,6 +52,11 @@ return new class extends Migration
             $table->text('tcy_mic')->nullable();
             $table->text('tcy_mic_ris')->nullable();
             $table->text('comments')->nullable();
+
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by');
+            $table->foreign('created_by')->references('id')->on('users')->unsigned();
+            $table->foreign('updated_by')->references('id')->on('users')->unsigned();
             $table->timestamps();
         });
     }
