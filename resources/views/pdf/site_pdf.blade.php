@@ -158,14 +158,14 @@
                     </tr>
                     <tr align="center">
                       <td rowspan="2" colspan="3">MIC (ug/ml)</td>
-                      <td>{{ isset($isolate->site_isolate->azm_mic) ? $isolate->site_isolate->azm_mic  : '' }}</td>
-                      <td> {{ isset($isolate->site_isolate->gen_mic) ? $isolate->site_isolate->gen_mic  : '' }}</td>
-                      <td> {{ isset($isolate->site_isolate->cfm_mic) ? $isolate->site_isolate->cfm_mic  : '' }}</td>
-                      <td> {{ isset($isolate->site_isolate->nal_mic) ? $isolate->site_isolate->nal_mic  : '' }}</td>
-                      <td> {{ isset($isolate->site_isolate->cro_mic) ? $isolate->site_isolate->cro_mic  : '' }}</td>
-                      <td> {{ isset($isolate->site_isolate->spt_mic) ? $isolate->site_isolate->spt_mic  : '' }}</td>
-                      <td>{{ isset($isolate->site_isolate->cip_mic) ? $isolate->site_isolate->cip_mic  : '' }}</td>
-                      <td>{{ isset($isolate->site_isolate->tcy_mic) ? $isolate->site_isolate->tcy_mic  : '' }}</td>
+                      <td>{{ isset($isolate->site_isolate->azm_mic_operand) ? $isolate->site_isolate->azm_mic_operand  : '' }}{{ isset($isolate->site_isolate->azm_mic) ? $isolate->site_isolate->azm_mic  : '' }}</td>
+                      <td> {{ isset($isolate->site_isolate->gen_mic_operand) ? $isolate->site_isolate->gen_mic_operand  : '' }}{{ isset($isolate->site_isolate->gen_mic) ? $isolate->site_isolate->gen_mic  : '' }}</td>
+                      <td> {{ isset($isolate->site_isolate->cfm_mic_operand) ? $isolate->site_isolate->cfm_mic_operand  : '' }}{{ isset($isolate->site_isolate->cfm_mic) ? $isolate->site_isolate->cfm_mic  : '' }}</td>
+                      <td> {{ isset($isolate->site_isolate->nal_mic_operand) ? $isolate->site_isolate->nal_mic_operand  : '' }}{{ isset($isolate->site_isolate->nal_mic) ? $isolate->site_isolate->nal_mic  : '' }}</td>
+                      <td> {{ isset($isolate->site_isolate->cro_mic_operand) ? $isolate->site_isolate->cro_mic_operand  : '' }}{{ isset($isolate->site_isolate->cro_mic) ? $isolate->site_isolate->cro_mic  : '' }}</td>
+                      <td> {{ isset($isolate->site_isolate->spt_mic_operand) ? $isolate->site_isolate->spt_mic_operand  : '' }}{{ isset($isolate->site_isolate->spt_mic) ? $isolate->site_isolate->spt_mic  : '' }}</td>
+                      <td>{{ isset($isolate->site_isolate->cip_mic_operand) ? $isolate->site_isolate->cip_mic_operand  : '' }}{{ isset($isolate->site_isolate->cip_mic) ? $isolate->site_isolate->cip_mic  : '' }}</td>
+                      <td>{{ isset($isolate->site_isolate->tcy_mic_operand) ? $isolate->site_isolate->tcy_mic_operand  : '' }}{{ isset($isolate->site_isolate->tcy_mic) ? $isolate->site_isolate->tcy_mic  : '' }}</td>
 
                     </tr>
                     <tr align="center">

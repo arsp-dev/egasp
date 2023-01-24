@@ -37,6 +37,7 @@ class SiteIsolateController extends Controller
      */
     public function store(Request $request)
     {
+
         // dd($request->except(['_token','accession_no','isolate_id']));
         $site_isolate = SiteIsolate::updateOrCreate(['isolate_id' => $request->isolate_id],$request->except(['_token','accession_no','isolate_id']))->touch();
         $isolate = Isolate::where('id',$request->isolate_id)->first();

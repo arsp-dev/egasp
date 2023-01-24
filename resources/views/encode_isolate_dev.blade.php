@@ -236,14 +236,14 @@
           <td>Antibiotic</td>
           <td>Disk</td>
           <td>RIS</td>
-          <td>MIC</td>
+          <td colspan="2">MIC</td>
           <td>RIS</td>
         </tr>
       </thead>
       <tbody class="align-middle">
         <tr>
           <td>Azitromycin</td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->azm_disk) & $isolate->site_isolate->azm_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->azm_disk) ? $isolate->site_isolate->azm_disk  : '' }}" type="number" min="6.0" max="60.00" name="azm_disk" autocomplete="off"></td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->azm_disk) & $isolate->site_isolate->azm_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->azm_disk) ? $isolate->site_isolate->azm_disk  : '' }}" type="number" step="any" min="6.0" max="60.00" name="azm_disk" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->azm_disk_ris) & $isolate->site_isolate->azm_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->azm_disk_ris) ? $isolate->site_isolate->azm_disk_ris  : '' }}" type="text" name="azm_disk_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->azm_disk_ris) & $isolate->site_isolate->azm_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="azm_disk_ris">
             <option selected> </option>
@@ -252,7 +252,16 @@
             <option {{ isset($isolate->site_isolate->azm_disk_ris) & $isolate->site_isolate->azm_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
             <option {{ isset($isolate->site_isolate->azm_disk_ris) & $isolate->site_isolate->azm_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
           </select></td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->azm_mic) & $isolate->site_isolate->azm_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->azm_mic) ? $isolate->site_isolate->azm_mic  : '' }}" type="number"   name="azm_mic" autocomplete="off"></td>
+          <td>
+            <select class=" form-select form-select-sm {{ isset($isolate->site_isolate->azm_mic_operand) & $isolate->site_isolate->azm_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="azm_mic_operand">
+              <option selected> </option>
+              <option {{ isset($isolate->site_isolate->azm_mic_operand) & $isolate->site_isolate->azm_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+              <option {{ isset($isolate->site_isolate->azm_mic_operand) & $isolate->site_isolate->azm_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+              <option {{ isset($isolate->site_isolate->azm_mic_operand) & $isolate->site_isolate->azm_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+              <option {{ isset($isolate->site_isolate->azm_mic_operand) & $isolate->site_isolate->azm_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+            </select>
+          </td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->azm_mic) & $isolate->site_isolate->azm_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->azm_mic) ? $isolate->site_isolate->azm_mic  : '' }}" type="number" min="0.0001" step="any"  name="azm_mic" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->azm_mic_ris) & $isolate->site_isolate->azm_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->azm_mic_ris) ? $isolate->site_isolate->azm_mic_ris  : '' }}" type="text" name="azm_mic_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->azm_mic_ris) & $isolate->site_isolate->azm_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="azm_mic_ris">
             <option selected> </option>
@@ -266,7 +275,16 @@
           <td>Gentamicin</td>
           <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->gen_disk) & $isolate->site_isolate->gen_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->gen_disk) ? $isolate->site_isolate->gen_disk  : '' }}" type="text" name="gen_disk" id="" disabled></td>
           <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->gen_disk_ris) & $isolate->site_isolate->gen_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->gen_disk_ris) ? $isolate->site_isolate->gen_disk_ris  : '' }}" type="text" name="gen_disk_ris" id="" disabled></td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->gen_mic) & $isolate->site_isolate->gen_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->gen_mic) ? $isolate->site_isolate->gen_mic  : '' }}" type="number"   name="gen_mic" id="" autocomplete="off"></td>
+          <td>
+            <select class=" form-select form-select-sm {{ isset($isolate->site_isolate->gen_mic_operand) & $isolate->site_isolate->gen_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="gen_mic_operand">
+              <option selected> </option>
+              <option {{ isset($isolate->site_isolate->gen_mic_operand) & $isolate->site_isolate->gen_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+              <option {{ isset($isolate->site_isolate->gen_mic_operand) & $isolate->site_isolate->gen_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+              <option {{ isset($isolate->site_isolate->gen_mic_operand) & $isolate->site_isolate->gen_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+              <option {{ isset($isolate->site_isolate->gen_mic_operand) & $isolate->site_isolate->gen_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+            </select>
+          </td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->gen_mic) & $isolate->site_isolate->gen_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->gen_mic) ? $isolate->site_isolate->gen_mic  : '' }}" type="number"  step="any" min="0.0001"    name="gen_mic" id="" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->gen_mic_ris) & $isolate->site_isolate->gen_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->gen_mic_ris) ? $isolate->site_isolate->gen_mic_ris  : '' }}" type="text" name="gen_mic_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->gen_mic_ris) & $isolate->site_isolate->gen_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="gen_mic_ris">
             <option selected> </option>
@@ -274,11 +292,12 @@
             <option {{ isset($isolate->site_isolate->gen_mic_ris) & $isolate->site_isolate->gen_mic_ris == 'I' ? 'selected'  : '' }} value="I">I</option>
             <option {{ isset($isolate->site_isolate->gen_mic_ris) & $isolate->site_isolate->gen_mic_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
             <option {{ isset($isolate->site_isolate->gen_mic_ris) & $isolate->site_isolate->gen_mic_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
+            <option {{ isset($isolate->site_isolate->gen_mic_ris) & $isolate->site_isolate->gen_mic_ris == 'U' ? 'selected'  : '' }} value="U">U</option>
           </select></td>
         </tr>
         <tr>
           <td>Cefixime</td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cfm_disk) & $isolate->site_isolate->cfm_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cfm_disk) ? $isolate->site_isolate->cfm_disk  : '' }}" type="number" min="6.0" max="60.00" name="cfm_disk" id="" autocomplete="off"></td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cfm_disk) & $isolate->site_isolate->cfm_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cfm_disk) ? $isolate->site_isolate->cfm_disk  : '' }}" type="number" step="any" min="6.0" max="60.00" name="cfm_disk" id="" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cfm_disk_ris) & $isolate->site_isolate->cfm_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cfm_disk_ris) ? $isolate->site_isolate->cfm_disk_ris  : '' }}" type="text" name="cfm_disk_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->cfm_disk_ris) & $isolate->site_isolate->cfm_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cfm_disk_ris">
             <option selected> </option>
@@ -287,7 +306,16 @@
             <option {{ isset($isolate->site_isolate->cfm_disk_ris) & $isolate->site_isolate->cfm_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
             <option {{ isset($isolate->site_isolate->cfm_disk_ris) & $isolate->site_isolate->cfm_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
           </select></td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cfm_mic) & $isolate->site_isolate->cfm_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cfm_mic) ? $isolate->site_isolate->cfm_mic  : '' }}" type="number"   name="cfm_mic" id="" autocomplete="off"></td>
+          <td>
+            <select class=" form-select form-select-sm {{ isset($isolate->site_isolate->cfm_mic_operand) & $isolate->site_isolate->cfm_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cfm_mic_operand">
+              <option selected> </option>
+              <option {{ isset($isolate->site_isolate->cfm_mic_operand) & $isolate->site_isolate->cfm_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+              <option {{ isset($isolate->site_isolate->cfm_mic_operand) & $isolate->site_isolate->cfm_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+              <option {{ isset($isolate->site_isolate->cfm_mic_operand) & $isolate->site_isolate->cfm_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+              <option {{ isset($isolate->site_isolate->cfm_mic_operand) & $isolate->site_isolate->cfm_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+            </select>
+          </td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cfm_mic) & $isolate->site_isolate->cfm_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cfm_mic) ? $isolate->site_isolate->cfm_mic  : '' }}" type="number" step="any"   name="cfm_mic" id="" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cfm_mic_ris) & $isolate->site_isolate->cfm_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cfm_mic_ris) ? $isolate->site_isolate->cfm_mic_ris  : '' }}" type="text" name="cfm_mic_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->cfm_mic_ris) & $isolate->site_isolate->cfm_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cfm_mic_ris">
             <option selected> </option>
@@ -299,7 +327,7 @@
         </tr>
         <tr>
           <td>Nalidixic Acid</td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->nal_disk) & $isolate->site_isolate->nal_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->nal_disk) ? $isolate->site_isolate->nal_disk  : '' }}" type="number" min="6.00" max="60.00" name="nal_disk" id="" autocomplete="off"></td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->nal_disk) & $isolate->site_isolate->nal_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->nal_disk) ? $isolate->site_isolate->nal_disk  : '' }}" type="number"  step="any" min="6.00" max="60.00" name="nal_disk" id="" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->nal_disk_ris) & $isolate->site_isolate->nal_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->nal_disk_ris) ? $isolate->site_isolate->nal_disk_ris  : '' }}" type="text" name="nal_disk_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->nal_disk_ris) & $isolate->site_isolate->nal_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="nal_disk_ris">
             <option selected> </option>
@@ -308,7 +336,16 @@
             <option {{ isset($isolate->site_isolate->nal_disk_ris) & $isolate->site_isolate->nal_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
             <option {{ isset($isolate->site_isolate->nal_disk_ris) & $isolate->site_isolate->nal_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
           </select></td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->nal_mic) & $isolate->site_isolate->nal_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->nal_mic) ? $isolate->site_isolate->nal_mic  : '' }}" type="number"   name="nal_mic" id="" autocomplete="off"></td>
+          <td>
+            <select class=" form-select form-select-sm {{ isset($isolate->site_isolate->nal_mic_operand) & $isolate->site_isolate->nal_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="nal_mic_operand">
+              <option selected> </option>
+              <option {{ isset($isolate->site_isolate->nal_mic_operand) & $isolate->site_isolate->nal_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+              <option {{ isset($isolate->site_isolate->nal_mic_operand) & $isolate->site_isolate->nal_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+              <option {{ isset($isolate->site_isolate->nal_mic_operand) & $isolate->site_isolate->nal_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+              <option {{ isset($isolate->site_isolate->nal_mic_operand) & $isolate->site_isolate->nal_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+            </select>
+          </td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->nal_mic) & $isolate->site_isolate->nal_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->nal_mic) ? $isolate->site_isolate->nal_mic  : '' }}" type="number" step="any"  name="nal_mic" id="" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->nal_mic_ris) & $isolate->site_isolate->nal_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->nal_mic_ris) ? $isolate->site_isolate->nal_mic_ris  : '' }}" type="text" name="nal_mic_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->nal_mic_ris) & $isolate->site_isolate->nal_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="nal_mic_ris">
             <option selected> </option>
@@ -320,7 +357,7 @@
         </tr>
         <tr>
           <td>Ceftriaxone</td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cro_disk) & $isolate->site_isolate->cro_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cro_disk) ? $isolate->site_isolate->cro_disk  : '' }}" type="number" min="6.0" max="60.00" name="cro_disk" id="" autocomplete="off"></td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cro_disk) & $isolate->site_isolate->cro_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cro_disk) ? $isolate->site_isolate->cro_disk  : '' }}" type="number"  step="any" min="6.0" max="60.00" name="cro_disk" id="" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cro_disk_ris) & $isolate->site_isolate->cro_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cro_disk_ris) ? $isolate->site_isolate->cro_disk_ris  : '' }}" type="text" name="cro_disk_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->cro_disk_ris) & $isolate->site_isolate->cro_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cro_disk_ris">
             <option selected> </option>
@@ -329,7 +366,16 @@
             <option {{ isset($isolate->site_isolate->cro_disk_ris) & $isolate->site_isolate->cro_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
             <option {{ isset($isolate->site_isolate->cro_disk_ris) & $isolate->site_isolate->cro_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
           </select></td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cro_mic) & $isolate->site_isolate->cro_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cro_mic) ? $isolate->site_isolate->cro_mic  : '' }}" type="number"   name="cro_mic" id="" autocomplete="off"></td>
+          <td>
+            <select class=" form-select form-select-sm {{ isset($isolate->site_isolate->cro_mic_operand) & $isolate->site_isolate->cro_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cro_mic_operand">
+              <option selected> </option>
+              <option {{ isset($isolate->site_isolate->cro_mic_operand) & $isolate->site_isolate->cro_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+              <option {{ isset($isolate->site_isolate->cro_mic_operand) & $isolate->site_isolate->cro_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+              <option {{ isset($isolate->site_isolate->cro_mic_operand) & $isolate->site_isolate->cro_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+              <option {{ isset($isolate->site_isolate->cro_mic_operand) & $isolate->site_isolate->cro_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+            </select>
+          </td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cro_mic) & $isolate->site_isolate->cro_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cro_mic) ? $isolate->site_isolate->cro_mic  : '' }}" type="number" step="any"   name="cro_mic" id="" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cro_mic_ris) & $isolate->site_isolate->cro_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cro_mic_ris) ? $isolate->site_isolate->cro_mic_ris  : '' }}" type="text" name="cro_mic_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->cro_mic_ris) & $isolate->site_isolate->cro_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cro_mic_ris">
             <option selected> </option>
@@ -341,7 +387,7 @@
         </tr>
         <tr>
           <td>Spectinomycin</td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->spt_disk) & $isolate->site_isolate->spt_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->spt_disk) ? $isolate->site_isolate->spt_disk  : '' }}" type="number" min="6.0" max="60.00" name="spt_disk" id="" autocomplete="off"></td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->spt_disk) & $isolate->site_isolate->spt_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->spt_disk) ? $isolate->site_isolate->spt_disk  : '' }}" type="number" step="any" min="6.0" max="60.00" name="spt_disk" id="" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->spt_disk_ris) & $isolate->site_isolate->spt_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->spt_disk_ris) ? $isolate->site_isolate->spt_disk_ris  : '' }}" type="text" name="spt_disk_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->spt_disk_ris) & $isolate->site_isolate->spt_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="spt_disk_ris">
             <option selected> </option>
@@ -350,7 +396,16 @@
             <option {{ isset($isolate->site_isolate->spt_disk_ris) & $isolate->site_isolate->spt_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
             <option {{ isset($isolate->site_isolate->spt_disk_ris) & $isolate->site_isolate->spt_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
           </select></td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->spt_mic) & $isolate->site_isolate->spt_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->spt_mic) ? $isolate->site_isolate->spt_mic  : '' }}" type="number"   name="spt_mic" id="" autocomplete="off"></td>
+          <td>
+            <select class=" form-select form-select-sm {{ isset($isolate->site_isolate->spt_mic_operand) & $isolate->site_isolate->spt_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="spt_mic_operand">
+              <option selected> </option>
+              <option {{ isset($isolate->site_isolate->spt_mic_operand) & $isolate->site_isolate->spt_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+              <option {{ isset($isolate->site_isolate->spt_mic_operand) & $isolate->site_isolate->spt_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+              <option {{ isset($isolate->site_isolate->spt_mic_operand) & $isolate->site_isolate->spt_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+              <option {{ isset($isolate->site_isolate->spt_mic_operand) & $isolate->site_isolate->spt_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+            </select>
+          </td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->spt_mic) & $isolate->site_isolate->spt_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->spt_mic) ? $isolate->site_isolate->spt_mic  : '' }}" type="number" step="any"   name="spt_mic" id="" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->spt_mic_ris) & $isolate->site_isolate->spt_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->spt_mic_ris) ? $isolate->site_isolate->spt_mic_ris  : '' }}" type="text" name="spt_mic_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->spt_mic_ris) & $isolate->site_isolate->spt_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="spt_mic_ris">
             <option selected> </option>
@@ -362,7 +417,7 @@
         </tr>
         <tr>
           <td>Ciprofloxacin</td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cip_disk) & $isolate->site_isolate->cip_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cip_disk) ? $isolate->site_isolate->cip_disk  : '' }}" type="number" min="6.0" max="60.00" name="cip_disk" id="" autocomplete="off"></td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cip_disk) & $isolate->site_isolate->cip_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cip_disk) ? $isolate->site_isolate->cip_disk  : '' }}" type="number" step="any" min="6.0" max="60.00" name="cip_disk" id="" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cip_disk_ris) & $isolate->site_isolate->cip_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cip_disk_ris) ? $isolate->site_isolate->cip_disk_ris  : '' }}" type="text" name="cip_disk_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->cip_disk_ris) & $isolate->site_isolate->cip_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cip_disk_ris">
             <option selected> </option>
@@ -371,7 +426,16 @@
             <option {{ isset($isolate->site_isolate->cip_disk_ris) & $isolate->site_isolate->cip_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
             <option {{ isset($isolate->site_isolate->cip_disk_ris) & $isolate->site_isolate->cip_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
           </select></td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cip_mic) & $isolate->site_isolate->cip_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cip_mic) ? $isolate->site_isolate->cip_mic  : '' }}" type="number"   name="cip_mic" id="" autocomplete="off"></td>
+          <td>
+            <select class=" form-select form-select-sm {{ isset($isolate->site_isolate->cip_mic_operand) & $isolate->site_isolate->cip_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cip_mic_operand">
+              <option selected> </option>
+              <option {{ isset($isolate->site_isolate->cip_mic_operand) & $isolate->site_isolate->cip_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+              <option {{ isset($isolate->site_isolate->cip_mic_operand) & $isolate->site_isolate->cip_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+              <option {{ isset($isolate->site_isolate->cip_mic_operand) & $isolate->site_isolate->cip_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+              <option {{ isset($isolate->site_isolate->cip_mic_operand) & $isolate->site_isolate->cip_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+            </select>
+          </td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cip_mic) & $isolate->site_isolate->cip_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cip_mic) ? $isolate->site_isolate->cip_mic  : '' }}" type="number" step="any"   name="cip_mic" id="" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->cip_mic_ris) & $isolate->site_isolate->cip_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->cip_mic_ris) ? $isolate->site_isolate->cip_mic_ris  : '' }}" type="text" name="cip_mic_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->cip_mic_ris) & $isolate->site_isolate->cip_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cip_mic_ris">
             <option selected> </option>
@@ -383,7 +447,7 @@
         </tr>
         <tr>
           <td>Tetracycline</td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->tcy_disk) & $isolate->site_isolate->tcy_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->tcy_disk) ? $isolate->site_isolate->tcy_disk  : '' }}" type="number" min="6.0" max="60.00" name="tcy_disk" id="" autocomplete="off"></td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->tcy_disk) & $isolate->site_isolate->tcy_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->tcy_disk) ? $isolate->site_isolate->tcy_disk  : '' }}" type="number" step="any" min="6.0" max="60.00" name="tcy_disk" id="" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->tcy_disk_ris) & $isolate->site_isolate->tcy_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->tcy_disk_ris) ? $isolate->site_isolate->tcy_disk_ris  : '' }}" type="text" name="tcy_disk_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->tcy_disk_ris) & $isolate->site_isolate->tcy_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="tcy_disk_ris">
             <option selected> </option>
@@ -392,7 +456,16 @@
             <option {{ isset($isolate->site_isolate->tcy_disk_ris) & $isolate->site_isolate->tcy_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
             <option {{ isset($isolate->site_isolate->tcy_disk_ris) & $isolate->site_isolate->tcy_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
           </select></td>
-          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->tcy_mic) & $isolate->site_isolate->tcy_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->tcy_mic) ? $isolate->site_isolate->tcy_mic  : '' }}" type="number"   name="tcy_mic" id="" autocomplete="off"></td>
+          <td>
+            <select class=" form-select form-select-sm {{ isset($isolate->site_isolate->tcy_mic_operand) & $isolate->site_isolate->tcy_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="tcy_mic_operand">
+              <option selected> </option>
+              <option {{ isset($isolate->site_isolate->tcy_mic_operand) & $isolate->site_isolate->tcy_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+              <option {{ isset($isolate->site_isolate->tcy_mic_operand) & $isolate->site_isolate->tcy_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+              <option {{ isset($isolate->site_isolate->tcy_mic_operand) & $isolate->site_isolate->tcy_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+              <option {{ isset($isolate->site_isolate->tcy_mic_operand) & $isolate->site_isolate->tcy_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+            </select>
+          </td>
+          <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->tcy_mic) & $isolate->site_isolate->tcy_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->tcy_mic) ? $isolate->site_isolate->tcy_mic  : '' }}" type="number" step="any"   name="tcy_mic" id="" autocomplete="off"></td>
           {{-- <td><input class="form-control form-control-sm {{ isset($isolate->site_isolate->tcy_mic_ris) & $isolate->site_isolate->tcy_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->tcy_mic_ris) ? $isolate->site_isolate->tcy_mic_ris  : '' }}" type="text" name="tcy_mic_ris" id=""></td> --}}
           <td><select class=" form-select form-select-sm {{ isset($isolate->site_isolate->tcy_mic_ris) & $isolate->site_isolate->tcy_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="tcy_mic_ris">
             <option selected> </option>
@@ -526,14 +599,14 @@
                         <td>Antibiotic</td>
                         <td>Disk</td>
                         <td>RIS</td>
-                        <td>MIC</td>
+                        <td colspan="2">MIC</td>
                         <td>RIS</td>
                       </tr>
                     </thead>
                     <tbody class="align-middle">
                       <tr>
                         <td>Azitromycin</td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->azm_disk) & $isolate->lab_isolate->azm_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->azm_disk) ? $isolate->lab_isolate->azm_disk  : '' }}" type="number" min="6.0" max="60.00" name="azm_disk" autocomplete="off"></td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->azm_disk) & $isolate->lab_isolate->azm_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->azm_disk) ? $isolate->lab_isolate->azm_disk  : '' }}" type="number" step="any" min="6.0" max="60.00" name="azm_disk" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->azm_disk_ris) & $isolate->lab_isolate->azm_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->azm_disk_ris) ? $isolate->lab_isolate->azm_disk_ris  : '' }}" type="text" name="azm_disk_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->azm_disk_ris) & $isolate->lab_isolate->azm_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="azm_disk_ris">
                           <option selected> </option>
@@ -542,7 +615,16 @@
                           <option {{ isset($isolate->lab_isolate->azm_disk_ris) & $isolate->lab_isolate->azm_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
                           <option {{ isset($isolate->lab_isolate->azm_disk_ris) & $isolate->lab_isolate->azm_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
                         </select></td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->azm_mic) & $isolate->lab_isolate->azm_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->azm_mic) ? $isolate->lab_isolate->azm_mic  : '' }}" type="number"   name="azm_mic" autocomplete="off"></td>
+                        <td>
+                          <select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->azm_mic_operand) & $isolate->lab_isolate->azm_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="azm_mic_operand">
+                            <option selected> </option>
+                            <option {{ isset($isolate->lab_isolate->azm_mic_operand) & $isolate->lab_isolate->azm_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+                            <option {{ isset($isolate->lab_isolate->azm_mic_operand) & $isolate->lab_isolate->azm_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+                            <option {{ isset($isolate->lab_isolate->azm_mic_operand) & $isolate->lab_isolate->azm_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+                            <option {{ isset($isolate->lab_isolate->azm_mic_operand) & $isolate->lab_isolate->azm_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+                          </select>
+                        </td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->azm_mic) & $isolate->lab_isolate->azm_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->azm_mic) ? $isolate->lab_isolate->azm_mic  : '' }}" type="number" step="any"   name="azm_mic" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->azm_mic_ris) & $isolate->lab_isolate->azm_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->azm_mic_ris) ? $isolate->lab_isolate->azm_mic_ris  : '' }}" type="text" name="azm_mic_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->azm_mic_ris) & $isolate->lab_isolate->azm_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="azm_mic_ris">
                           <option selected> </option>
@@ -556,7 +638,16 @@
                         <td>Gentamicin</td>
                         <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->gen_disk) & $isolate->lab_isolate->gen_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->gen_disk) ? $isolate->lab_isolate->gen_disk  : '' }}" type="text" name="gen_disk" id="" disabled></td>
                         <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->gen_disk_ris) & $isolate->lab_isolate->gen_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->gen_disk_ris) ? $isolate->lab_isolate->gen_disk_ris  : '' }}" type="text" name="gen_disk_ris" id="" disabled></td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->gen_mic) & $isolate->lab_isolate->gen_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->gen_mic) ? $isolate->lab_isolate->gen_mic  : '' }}" type="number"   name="gen_mic" id="" autocomplete="off"></td>
+                        <td>
+                          <select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->gen_mic_operand) & $isolate->lab_isolate->gen_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="gen_mic_operand">
+                            <option selected> </option>
+                            <option {{ isset($isolate->lab_isolate->gen_mic_operand) & $isolate->lab_isolate->gen_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+                            <option {{ isset($isolate->lab_isolate->gen_mic_operand) & $isolate->lab_isolate->gen_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+                            <option {{ isset($isolate->lab_isolate->gen_mic_operand) & $isolate->lab_isolate->gen_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+                            <option {{ isset($isolate->lab_isolate->gen_mic_operand) & $isolate->lab_isolate->gen_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+                          </select>
+                        </td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->gen_mic) & $isolate->lab_isolate->gen_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->gen_mic) ? $isolate->lab_isolate->gen_mic  : '' }}" type="number" step="any"   name="gen_mic" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->gen_mic_ris) & $isolate->lab_isolate->gen_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->gen_mic_ris) ? $isolate->lab_isolate->gen_mic_ris  : '' }}" type="text" name="gen_mic_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->gen_mic_ris) & $isolate->lab_isolate->gen_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="gen_mic_ris">
                           <option selected> </option>
@@ -564,11 +655,12 @@
                           <option {{ isset($isolate->lab_isolate->gen_mic_ris) & $isolate->lab_isolate->gen_mic_ris == 'I' ? 'selected'  : '' }} value="I">I</option>
                           <option {{ isset($isolate->lab_isolate->gen_mic_ris) & $isolate->lab_isolate->gen_mic_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
                           <option {{ isset($isolate->lab_isolate->gen_mic_ris) & $isolate->lab_isolate->gen_mic_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
+                          <option {{ isset($isolate->lab_isolate->gen_mic_ris) & $isolate->lab_isolate->gen_mic_ris == 'U' ? 'selected'  : '' }} value="U">U</option>
                         </select></td>
                       </tr>
                       <tr>
                         <td>Cefixime</td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cfm_disk) & $isolate->lab_isolate->cfm_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cfm_disk) ? $isolate->lab_isolate->cfm_disk  : '' }}" type="number" min="6.0" max="60.00" name="cfm_disk" id="" autocomplete="off"></td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cfm_disk) & $isolate->lab_isolate->cfm_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cfm_disk) ? $isolate->lab_isolate->cfm_disk  : '' }}" type="number" step="any"  min="6.0" max="60.00" name="cfm_disk" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cfm_disk_ris) & $isolate->lab_isolate->cfm_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cfm_disk_ris) ? $isolate->lab_isolate->cfm_disk_ris  : '' }}" type="text" name="cfm_disk_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->cfm_disk_ris) & $isolate->lab_isolate->cfm_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cfm_disk_ris">
                           <option selected> </option>
@@ -577,7 +669,16 @@
                           <option {{ isset($isolate->lab_isolate->cfm_disk_ris) & $isolate->lab_isolate->cfm_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
                           <option {{ isset($isolate->lab_isolate->cfm_disk_ris) & $isolate->lab_isolate->cfm_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
                         </select></td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cfm_mic) & $isolate->lab_isolate->cfm_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cfm_mic) ? $isolate->lab_isolate->cfm_mic  : '' }}" type="number"   name="cfm_mic" id="" autocomplete="off"></td>
+                        <td>
+                          <select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->cfm_mic_operand) & $isolate->lab_isolate->cfm_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cfm_mic_operand">
+                            <option selected> </option>
+                            <option {{ isset($isolate->lab_isolate->cfm_mic_operand) & $isolate->lab_isolate->cfm_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+                            <option {{ isset($isolate->lab_isolate->cfm_mic_operand) & $isolate->lab_isolate->cfm_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+                            <option {{ isset($isolate->lab_isolate->cfm_mic_operand) & $isolate->lab_isolate->cfm_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+                            <option {{ isset($isolate->lab_isolate->cfm_mic_operand) & $isolate->lab_isolate->cfm_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+                          </select>
+                        </td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cfm_mic) & $isolate->lab_isolate->cfm_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cfm_mic) ? $isolate->lab_isolate->cfm_mic  : '' }}" type="number" step="any"  name="cfm_mic" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cfm_mic_ris) & $isolate->lab_isolate->cfm_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cfm_mic_ris) ? $isolate->lab_isolate->cfm_mic_ris  : '' }}" type="text" name="cfm_mic_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->cfm_mic_ris) & $isolate->lab_isolate->cfm_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cfm_mic_ris">
                           <option selected> </option>
@@ -589,7 +690,7 @@
                       </tr>
                       <tr>
                         <td>Nalidixic Acid</td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->nal_disk) & $isolate->lab_isolate->nal_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->nal_disk) ? $isolate->lab_isolate->nal_disk  : '' }}" type="number" min="6.00" max="60.00" name="nal_disk" id="" autocomplete="off"></td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->nal_disk) & $isolate->lab_isolate->nal_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->nal_disk) ? $isolate->lab_isolate->nal_disk  : '' }}" type="number" step="any" min="6.00" max="60.00" name="nal_disk" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->nal_disk_ris) & $isolate->lab_isolate->nal_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->nal_disk_ris) ? $isolate->lab_isolate->nal_disk_ris  : '' }}" type="text" name="nal_disk_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->nal_disk_ris) & $isolate->lab_isolate->nal_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="nal_disk_ris">
                           <option selected> </option>
@@ -598,7 +699,16 @@
                           <option {{ isset($isolate->lab_isolate->nal_disk_ris) & $isolate->lab_isolate->nal_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
                           <option {{ isset($isolate->lab_isolate->nal_disk_ris) & $isolate->lab_isolate->nal_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
                         </select></td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->nal_mic) & $isolate->lab_isolate->nal_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->nal_mic) ? $isolate->lab_isolate->nal_mic  : '' }}" type="number"   name="nal_mic" id="" autocomplete="off"></td>
+                        <td>
+                          <select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->nal_mic_operand) & $isolate->lab_isolate->nal_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="nal_mic_operand">
+                            <option selected> </option>
+                            <option {{ isset($isolate->lab_isolate->nal_mic_operand) & $isolate->lab_isolate->nal_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+                            <option {{ isset($isolate->lab_isolate->nal_mic_operand) & $isolate->lab_isolate->nal_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+                            <option {{ isset($isolate->lab_isolate->nal_mic_operand) & $isolate->lab_isolate->nal_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+                            <option {{ isset($isolate->lab_isolate->nal_mic_operand) & $isolate->lab_isolate->nal_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+                          </select>
+                        </td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->nal_mic) & $isolate->lab_isolate->nal_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->nal_mic) ? $isolate->lab_isolate->nal_mic  : '' }}" type="number"  step="any"  name="nal_mic" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->nal_mic_ris) & $isolate->lab_isolate->nal_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->nal_mic_ris) ? $isolate->lab_isolate->nal_mic_ris  : '' }}" type="text" name="nal_mic_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->nal_mic_ris) & $isolate->lab_isolate->nal_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="nal_mic_ris">
                           <option selected> </option>
@@ -610,7 +720,7 @@
                       </tr>
                       <tr>
                         <td>Ceftriaxone</td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cro_disk) & $isolate->lab_isolate->cro_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cro_disk) ? $isolate->lab_isolate->cro_disk  : '' }}" type="number" min="6.0" max="60.00" name="cro_disk" id="" autocomplete="off"></td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cro_disk) & $isolate->lab_isolate->cro_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cro_disk) ? $isolate->lab_isolate->cro_disk  : '' }}" type="number"  step="any" min="6.0" max="60.00" name="cro_disk" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cro_disk_ris) & $isolate->lab_isolate->cro_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cro_disk_ris) ? $isolate->lab_isolate->cro_disk_ris  : '' }}" type="text" name="cro_disk_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->cro_disk_ris) & $isolate->lab_isolate->cro_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cro_disk_ris">
                           <option selected> </option>
@@ -619,7 +729,16 @@
                           <option {{ isset($isolate->lab_isolate->cro_disk_ris) & $isolate->lab_isolate->cro_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
                           <option {{ isset($isolate->lab_isolate->cro_disk_ris) & $isolate->lab_isolate->cro_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
                         </select></td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cro_mic) & $isolate->lab_isolate->cro_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cro_mic) ? $isolate->lab_isolate->cro_mic  : '' }}" type="number"   name="cro_mic" id="" autocomplete="off"></td>
+                        <td>
+                          <select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->cro_mic_operand) & $isolate->lab_isolate->cro_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cro_mic_operand">
+                            <option selected> </option>
+                            <option {{ isset($isolate->lab_isolate->cro_mic_operand) & $isolate->lab_isolate->cro_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+                            <option {{ isset($isolate->lab_isolate->cro_mic_operand) & $isolate->lab_isolate->cro_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+                            <option {{ isset($isolate->lab_isolate->cro_mic_operand) & $isolate->lab_isolate->cro_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+                            <option {{ isset($isolate->lab_isolate->cro_mic_operand) & $isolate->lab_isolate->cro_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+                          </select>
+                        </td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cro_mic) & $isolate->lab_isolate->cro_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cro_mic) ? $isolate->lab_isolate->cro_mic  : '' }}" type="number" step="any"   name="cro_mic" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cro_mic_ris) & $isolate->lab_isolate->cro_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cro_mic_ris) ? $isolate->lab_isolate->cro_mic_ris  : '' }}" type="text" name="cro_mic_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->cro_mic_ris) & $isolate->lab_isolate->cro_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cro_mic_ris">
                           <option selected> </option>
@@ -631,7 +750,7 @@
                       </tr>
                       <tr>
                         <td>Spectinomycin</td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->spt_disk) & $isolate->lab_isolate->spt_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->spt_disk) ? $isolate->lab_isolate->spt_disk  : '' }}" type="number" min="6.0" max="60.00" name="spt_disk" id="" autocomplete="off"></td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->spt_disk) & $isolate->lab_isolate->spt_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->spt_disk) ? $isolate->lab_isolate->spt_disk  : '' }}" type="number" step="any" min="6.0" max="60.00" name="spt_disk" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->spt_disk_ris) & $isolate->lab_isolate->spt_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->spt_disk_ris) ? $isolate->lab_isolate->spt_disk_ris  : '' }}" type="text" name="spt_disk_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->spt_disk_ris) & $isolate->lab_isolate->spt_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="spt_disk_ris">
                           <option selected> </option>
@@ -640,7 +759,16 @@
                           <option {{ isset($isolate->lab_isolate->spt_disk_ris) & $isolate->lab_isolate->spt_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
                           <option {{ isset($isolate->lab_isolate->spt_disk_ris) & $isolate->lab_isolate->spt_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
                         </select></td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->spt_mic) & $isolate->lab_isolate->spt_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->spt_mic) ? $isolate->lab_isolate->spt_mic  : '' }}" type="number"   name="spt_mic" id="" autocomplete="off"></td>
+                        <td>
+                          <select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->spt_mic_operand) & $isolate->lab_isolate->spt_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="spt_mic_operand">
+                            <option selected> </option>
+                            <option {{ isset($isolate->lab_isolate->spt_mic_operand) & $isolate->lab_isolate->spt_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+                            <option {{ isset($isolate->lab_isolate->spt_mic_operand) & $isolate->lab_isolate->spt_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+                            <option {{ isset($isolate->lab_isolate->spt_mic_operand) & $isolate->lab_isolate->spt_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+                            <option {{ isset($isolate->lab_isolate->spt_mic_operand) & $isolate->lab_isolate->spt_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+                          </select>
+                        </td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->spt_mic) & $isolate->lab_isolate->spt_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->spt_mic) ? $isolate->lab_isolate->spt_mic  : '' }}" type="number" step="any"   name="spt_mic" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->spt_mic_ris) & $isolate->lab_isolate->spt_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->spt_mic_ris) ? $isolate->lab_isolate->spt_mic_ris  : '' }}" type="text" name="spt_mic_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->spt_mic_ris) & $isolate->lab_isolate->spt_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="spt_mic_ris">
                           <option selected> </option>
@@ -652,7 +780,7 @@
                       </tr>
                       <tr>
                         <td>Ciprofloxacin</td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cip_disk) & $isolate->lab_isolate->cip_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cip_disk) ? $isolate->lab_isolate->cip_disk  : '' }}" type="number" min="6.0" max="60.00" name="cip_disk" id="" autocomplete="off"></td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cip_disk) & $isolate->lab_isolate->cip_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cip_disk) ? $isolate->lab_isolate->cip_disk  : '' }}" type="number" step="any" min="6.0" max="60.00" name="cip_disk" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cip_disk_ris) & $isolate->lab_isolate->cip_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cip_disk_ris) ? $isolate->lab_isolate->cip_disk_ris  : '' }}" type="text" name="cip_disk_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->cip_disk_ris) & $isolate->lab_isolate->cip_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cip_disk_ris">
                           <option selected> </option>
@@ -661,7 +789,16 @@
                           <option {{ isset($isolate->lab_isolate->cip_disk_ris) & $isolate->lab_isolate->cip_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
                           <option {{ isset($isolate->lab_isolate->cip_disk_ris) & $isolate->lab_isolate->cip_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
                         </select></td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cip_mic) & $isolate->lab_isolate->cip_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cip_mic) ? $isolate->lab_isolate->cip_mic  : '' }}" type="number"   name="cip_mic" id="" autocomplete="off"></td>
+                        <td>
+                          <select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->cip_mic_operand) & $isolate->lab_isolate->cip_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cip_mic_operand">
+                            <option selected> </option>
+                            <option {{ isset($isolate->lab_isolate->cip_mic_operand) & $isolate->lab_isolate->cip_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+                            <option {{ isset($isolate->lab_isolate->cip_mic_operand) & $isolate->lab_isolate->cip_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+                            <option {{ isset($isolate->lab_isolate->cip_mic_operand) & $isolate->lab_isolate->cip_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+                            <option {{ isset($isolate->lab_isolate->cip_mic_operand) & $isolate->lab_isolate->cip_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+                          </select>
+                        </td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cip_mic) & $isolate->lab_isolate->cip_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cip_mic) ? $isolate->lab_isolate->cip_mic  : '' }}" type="number" step="any"   name="cip_mic" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->cip_mic_ris) & $isolate->lab_isolate->cip_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->cip_mic_ris) ? $isolate->lab_isolate->cip_mic_ris  : '' }}" type="text" name="cip_mic_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->cip_mic_ris) & $isolate->lab_isolate->cip_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="cip_mic_ris">
                           <option selected> </option>
@@ -673,7 +810,7 @@
                       </tr>
                       <tr>
                         <td>Tetracycline</td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->tcy_disk) & $isolate->lab_isolate->tcy_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->tcy_disk) ? $isolate->lab_isolate->tcy_disk  : '' }}" type="number" min="6.0" max="60.00" name="tcy_disk" id="" autocomplete="off"></td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->tcy_disk) & $isolate->lab_isolate->tcy_disk != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->tcy_disk) ? $isolate->lab_isolate->tcy_disk  : '' }}" type="number" step="any" min="6.0" max="60.00" name="tcy_disk" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->tcy_disk_ris) & $isolate->lab_isolate->tcy_disk_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->tcy_disk_ris) ? $isolate->lab_isolate->tcy_disk_ris  : '' }}" type="text" name="tcy_disk_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->tcy_disk_ris) & $isolate->lab_isolate->tcy_disk_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="tcy_disk_ris">
                           <option selected> </option>
@@ -682,7 +819,16 @@
                           <option {{ isset($isolate->lab_isolate->tcy_disk_ris) & $isolate->lab_isolate->tcy_disk_ris == 'S' ? 'selected'  : '' }} value="S">S</option>
                           <option {{ isset($isolate->lab_isolate->tcy_disk_ris) & $isolate->lab_isolate->tcy_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
                         </select></td>
-                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->tcy_mic) & $isolate->lab_isolate->tcy_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->tcy_mic) ? $isolate->lab_isolate->tcy_mic  : '' }}" type="number"   name="tcy_mic" id="" autocomplete="off"></td>
+                        <td>
+                          <select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->tcy_mic_operand) & $isolate->lab_isolate->tcy_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="tcy_mic_operand">
+                            <option selected> </option>
+                            <option {{ isset($isolate->lab_isolate->tcy_mic_operand) & $isolate->lab_isolate->tcy_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
+                            <option {{ isset($isolate->lab_isolate->tcy_mic_operand) & $isolate->lab_isolate->tcy_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
+                            <option {{ isset($isolate->lab_isolate->tcy_mic_operand) & $isolate->lab_isolate->tcy_mic_operand == '>=' ? 'selected'  : '' }} value=">=">>=</option>
+                            <option {{ isset($isolate->lab_isolate->tcy_mic_operand) & $isolate->lab_isolate->tcy_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
+                          </select>
+                        </td>
+                        <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->tcy_mic) & $isolate->lab_isolate->tcy_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->tcy_mic) ? $isolate->lab_isolate->tcy_mic  : '' }}" type="number" step="any"   name="tcy_mic" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->tcy_mic_ris) & $isolate->lab_isolate->tcy_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->tcy_mic_ris) ? $isolate->lab_isolate->tcy_mic_ris  : '' }}" type="text" name="tcy_mic_ris" id=""></td> --}}
                         <td><select class=" form-select form-select-sm {{ isset($isolate->lab_isolate->tcy_mic_ris) & $isolate->lab_isolate->tcy_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="tcy_mic_ris">
                           <option selected> </option>
