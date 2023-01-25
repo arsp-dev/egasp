@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DevMassImportController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -35,4 +36,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('lab-isolates',LaboratoryIsolateController::class);
     Route::get('create-pdf/{isolate_id}',[IsolateController::class,'createPDF']);
     Route::get('create-pdf-site/{isolate_id}',[IsolateController::class,'createPDFSite']);
+    Route::post('dev-upload',DevMassImportController::class);
 });

@@ -41,7 +41,7 @@ class LaboratoryIsolateController extends Controller
         $isolate = Isolate::where('id',$request->isolate_id)->first();
         $hospital = Hospital::where('id',$isolate->hospital_id)->first();
         return redirect()->back()->with('alert-success', 'Successfully updated laboratory isolate with accession :  <b>' . $isolate->accession_no . '</b> <br> Sentinel Site :  <b>' . $hospital->hospital_name . '</b>');
-        return redirect()->back();
+        // return redirect()->back();
     }
 
     /**

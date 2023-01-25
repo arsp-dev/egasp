@@ -105,43 +105,26 @@
                       <td colspan="6" rowspan="5" align="center"> Date of Testing : {{ isset($isolate->site_isolate->date_of_susceptibility) ? $isolate->site_isolate->date_of_susceptibility->format('m/d/Y') : '' }} <br>  <b>{{ $isolate->hospital->hospital_code }}</b> </td>
                       <td colspan="3"> </td>
                       <td>AZM</td>
-                      
-                      <td>GEN</td>
-                     
                       <td>CFM</td>
-                     
-                      <td>NAL</td>
-                     
                       <td>CRO</td>
-                   
-                      <td>SPT</td>
-                      
                       <td>CIP</td>
                 
-                      <td>TET</td>
+                      <td>GEN</td>
+                      <td>NAL</td>
+                      <td>SPT</td>
+                      <td>TCY</td>
                     
                     </tr>
                     <tr align="center">
                       <td colspan="3" rowspan="2">Disk (mm)</td>
                       <td >{{ isset($isolate->site_isolate->azm_disk) ? $isolate->site_isolate->azm_disk  : '' }}</td>
-                     
-                      <td> {{ isset($isolate->site_isolate->gen_disk) ? $isolate->site_isolate->gen_disk  : '' }}</td>
-                    
-
                       <td> {{ isset($isolate->site_isolate->cfm_disk) ? $isolate->site_isolate->cfm_disk  : '' }}</td>
-                     
-
-                      <td> {{ isset($isolate->site_isolate->nal_disk) ? $isolate->site_isolate->nal_disk  : '' }}</td>
-                     
+                      <td>{{ isset($isolate->site_isolate->cip_disk) ? $isolate->site_isolate->cip_disk  : '' }}</td>
                       <td> {{ isset($isolate->site_isolate->cro_disk) ? $isolate->site_isolate->cro_disk  : '' }}</td>
                      
-
+                      <td> {{ isset($isolate->site_isolate->gen_disk) ? $isolate->site_isolate->gen_disk  : '' }}</td>
+                      <td> {{ isset($isolate->site_isolate->nal_disk) ? $isolate->site_isolate->nal_disk  : '' }}</td>
                       <td> {{ isset($isolate->site_isolate->spt_disk) ? $isolate->site_isolate->spt_disk  : '' }}</td>
-                     
-
-                      <td>{{ isset($isolate->site_isolate->cip_disk) ? $isolate->site_isolate->cip_disk  : '' }}</td>
-                      
-
                       <td>{{ isset($isolate->site_isolate->tcy_disk) ? $isolate->site_isolate->tcy_disk  : '' }}</td>
                      
                     </tr>
@@ -149,49 +132,35 @@
                      
                       
                       <td>{{ isset($isolate->site_isolate->azm_disk_ris) ? $isolate->site_isolate->azm_disk_ris  : '' }}</td>
-                      <td> {{ isset($isolate->site_isolate->gen_disk_ris) ? $isolate->site_isolate->gen_disk_ris  : '' }}</td>
                       <td> {{ isset($isolate->site_isolate->cfm_disk_ris) ? $isolate->site_isolate->cfm_disk_ris  : '' }}</td>
-                      <td> {{ isset($isolate->site_isolate->nal_disk_ris) ? $isolate->site_isolate->nal_disk_ris  : '' }}</td>
-                      <td> {{ isset($isolate->site_isolate->cro_disk_ris) ? $isolate->site_isolate->cro_disk_ris  : '' }}</td>
-                      <td> {{ isset($isolate->site_isolate->spt_disk_ris) ? $isolate->site_isolate->spt_disk_ris  : '' }}</td>
                       <td>{{ isset($isolate->site_isolate->cip_disk_ris) ? $isolate->site_isolate->cip_disk_ris  : '' }}</td>
+                      <td> {{ isset($isolate->site_isolate->cro_disk_ris) ? $isolate->site_isolate->cro_disk_ris  : '' }}</td>
+                      <td> {{ isset($isolate->site_isolate->gen_disk_ris) ? $isolate->site_isolate->gen_disk_ris  : '' }}</td>
+                      <td> {{ isset($isolate->site_isolate->nal_disk_ris) ? $isolate->site_isolate->nal_disk_ris  : '' }}</td>
+                      <td> {{ isset($isolate->site_isolate->spt_disk_ris) ? $isolate->site_isolate->spt_disk_ris  : '' }}</td>
                       <td>{{ isset($isolate->site_isolate->tcy_disk_ris) ? $isolate->site_isolate->tcy_disk_ris  : '' }}</td>
                     </tr>
                     <tr align="center">
                       <td rowspan="2" colspan="3">MIC (ug/ml)</td>
                       <td>{{ isset($isolate->site_isolate->azm_mic_operand) ? $isolate->site_isolate->azm_mic_operand  : '' }}{{ isset($isolate->site_isolate->azm_mic) ? $isolate->site_isolate->azm_mic  : '' }}</td>
-                      <td> {{ isset($isolate->site_isolate->gen_mic_operand) ? $isolate->site_isolate->gen_mic_operand  : '' }}{{ isset($isolate->site_isolate->gen_mic) ? $isolate->site_isolate->gen_mic  : '' }}</td>
                       <td> {{ isset($isolate->site_isolate->cfm_mic_operand) ? $isolate->site_isolate->cfm_mic_operand  : '' }}{{ isset($isolate->site_isolate->cfm_mic) ? $isolate->site_isolate->cfm_mic  : '' }}</td>
-                      <td> {{ isset($isolate->site_isolate->nal_mic_operand) ? $isolate->site_isolate->nal_mic_operand  : '' }}{{ isset($isolate->site_isolate->nal_mic) ? $isolate->site_isolate->nal_mic  : '' }}</td>
                       <td> {{ isset($isolate->site_isolate->cro_mic_operand) ? $isolate->site_isolate->cro_mic_operand  : '' }}{{ isset($isolate->site_isolate->cro_mic) ? $isolate->site_isolate->cro_mic  : '' }}</td>
-                      <td> {{ isset($isolate->site_isolate->spt_mic_operand) ? $isolate->site_isolate->spt_mic_operand  : '' }}{{ isset($isolate->site_isolate->spt_mic) ? $isolate->site_isolate->spt_mic  : '' }}</td>
                       <td>{{ isset($isolate->site_isolate->cip_mic_operand) ? $isolate->site_isolate->cip_mic_operand  : '' }}{{ isset($isolate->site_isolate->cip_mic) ? $isolate->site_isolate->cip_mic  : '' }}</td>
+                      <td> {{ isset($isolate->site_isolate->gen_mic_operand) ? $isolate->site_isolate->gen_mic_operand  : '' }}{{ isset($isolate->site_isolate->gen_mic) ? $isolate->site_isolate->gen_mic  : '' }}</td>
+                      <td> {{ isset($isolate->site_isolate->nal_mic_operand) ? $isolate->site_isolate->nal_mic_operand  : '' }}{{ isset($isolate->site_isolate->nal_mic) ? $isolate->site_isolate->nal_mic  : '' }}</td>
+                      <td> {{ isset($isolate->site_isolate->spt_mic_operand) ? $isolate->site_isolate->spt_mic_operand  : '' }}{{ isset($isolate->site_isolate->spt_mic) ? $isolate->site_isolate->spt_mic  : '' }}</td>
                       <td>{{ isset($isolate->site_isolate->tcy_mic_operand) ? $isolate->site_isolate->tcy_mic_operand  : '' }}{{ isset($isolate->site_isolate->tcy_mic) ? $isolate->site_isolate->tcy_mic  : '' }}</td>
 
                     </tr>
                     <tr align="center">
                      
                       <td>{{ isset($isolate->site_isolate->azm_mic_ris) ? $isolate->site_isolate->azm_mic_ris  : '' }}</td>
-
-                     
-                      <td> {{ isset($isolate->site_isolate->gen_mic_ris) ? $isolate->site_isolate->gen_mic_ris  : '' }}</td>
-
-                     
                       <td> {{ isset($isolate->site_isolate->cfm_mic_ris) ? $isolate->site_isolate->cfm_mic_ris  : '' }}</td>
-
-                      
-                      <td> {{ isset($isolate->site_isolate->nal_mic_ris) ? $isolate->site_isolate->nal_mic_ris  : '' }}</td>
-
-                     
                       <td> {{ isset($isolate->site_isolate->cro_mic_ris) ? $isolate->site_isolate->cro_mic_ris  : '' }}</td>
-
-                      
-                      <td> {{ isset($isolate->site_isolate->spt_mic_ris) ? $isolate->site_isolate->spt_mic_ris  : '' }}</td>
-
-                     
                       <td>{{ isset($isolate->site_isolate->cip_mic_ris) ? $isolate->site_isolate->cip_mic_ris  : '' }}</td>
-
-                     
+                      <td> {{ isset($isolate->site_isolate->gen_mic_ris) ? $isolate->site_isolate->gen_mic_ris  : '' }}</td>                    
+                      <td> {{ isset($isolate->site_isolate->nal_mic_ris) ? $isolate->site_isolate->nal_mic_ris  : '' }}</td>                 
+                      <td> {{ isset($isolate->site_isolate->spt_mic_ris) ? $isolate->site_isolate->spt_mic_ris  : '' }}</td>                
                       <td>{{ isset($isolate->site_isolate->tcy_mic_ris) ? $isolate->site_isolate->tcy_mic_ris  : '' }}</td>
                     </tr>
 
@@ -219,45 +188,36 @@
                       <td colspan="6" rowspan="4" align="center"> Date of Confirmation : {{ isset($isolate->lab_isolate->date_of_susceptibility) ? $isolate->lab_isolate->date_of_susceptibility->format('m/d/Y') : '' }} <br>  <b>ARSP</b> </td>
                       <td colspan="3" rowspan="2">Disk (mm)</td>
                       <td >{{ isset($isolate->lab_isolate->azm_disk) ? $isolate->lab_isolate->azm_disk  : '' }}</td>
-                   
+                      <td> {{ isset($isolate->lab_isolate->cfm_disk) ? $isolate->lab_isolate->cfm_disk  : '' }}</td>
+                      <td> {{ isset($isolate->lab_isolate->cro_disk) ? $isolate->lab_isolate->cro_disk  : '' }}</td>
+                      <td>{{ isset($isolate->lab_isolate->cip_disk) ? $isolate->lab_isolate->cip_disk  : '' }}</td>
 
                       <td> {{ isset($isolate->lab_isolate->gen_disk) ? $isolate->lab_isolate->gen_disk  : '' }}</td>
-                    
-
-                      <td> {{ isset($isolate->lab_isolate->cfm_disk) ? $isolate->lab_isolate->cfm_disk  : '' }}</td>
-                    
-
-                      <td> {{ isset($isolate->lab_isolate->nal_disk) ? $isolate->lab_isolate->nal_disk  : '' }}</td>
-                     
-                      <td> {{ isset($isolate->lab_isolate->cro_disk) ? $isolate->lab_isolate->cro_disk  : '' }}</td>
-                     
+                      <td> {{ isset($isolate->lab_isolate->nal_disk) ? $isolate->lab_isolate->nal_disk  : '' }}</td>                 
                       <td> {{ isset($isolate->lab_isolate->spt_disk) ? $isolate->lab_isolate->spt_disk  : '' }}</td>
-                    
-                      <td>{{ isset($isolate->lab_isolate->cip_disk) ? $isolate->lab_isolate->cip_disk  : '' }}</td>
-                    
-
                       <td>{{ isset($isolate->lab_isolate->tcy_disk) ? $isolate->lab_isolate->tcy_disk  : '' }}</td>
                      
                     </tr>
                     <tr  align="center">
                       <td>{{ isset($isolate->lab_isolate->azm_disk_ris) ? $isolate->lab_isolate->azm_disk_ris  : '' }}</td>
-                      <td> {{ isset($isolate->lab_isolate->gen_disk_ris) ? $isolate->lab_isolate->gen_disk_ris  : '' }}</td>
                       <td> {{ isset($isolate->lab_isolate->cfm_disk_ris) ? $isolate->lab_isolate->cfm_disk_ris  : '' }}</td>
-                      <td> {{ isset($isolate->lab_isolate->nal_disk_ris) ? $isolate->lab_isolate->nal_disk_ris  : '' }}</td>
                       <td> {{ isset($isolate->lab_isolate->cro_disk_ris) ? $isolate->lab_isolate->cro_disk_ris  : '' }}</td>
-                      <td> {{ isset($isolate->lab_isolate->spt_disk_ris) ? $isolate->lab_isolate->spt_disk_ris  : '' }}</td>
                       <td>{{ isset($isolate->lab_isolate->cip_disk_ris) ? $isolate->lab_isolate->cip_disk_ris  : '' }}</td>
+                
+                      <td> {{ isset($isolate->lab_isolate->gen_disk_ris) ? $isolate->lab_isolate->gen_disk_ris  : '' }}</td>
+                      <td> {{ isset($isolate->lab_isolate->nal_disk_ris) ? $isolate->lab_isolate->nal_disk_ris  : '' }}</td>
+                      <td> {{ isset($isolate->lab_isolate->spt_disk_ris) ? $isolate->lab_isolate->spt_disk_ris  : '' }}</td>
                       <td>{{ isset($isolate->lab_isolate->tcy_disk_ris) ? $isolate->lab_isolate->tcy_disk_ris  : '' }}</td>
                     </tr>
                     <tr align="center">
                       <td colspan="3" rowspan="2">MIC (ug/ml)</td>
                       <td>{{ isset($isolate->lab_isolate->azm_mic_operand) ? $isolate->lab_isolate->azm_mic_operand  : '' }}{{ isset($isolate->lab_isolate->azm_mic) ? $isolate->lab_isolate->azm_mic  : '' }}</td>
-                      <td> {{ isset($isolate->lab_isolate->gen_mic_operand) ? $isolate->lab_isolate->gen_mic_operand  : '' }}{{ isset($isolate->lab_isolate->gen_mic) ? $isolate->lab_isolate->gen_mic  : '' }}</td>
                       <td> {{ isset($isolate->lab_isolate->cfm_mic_operand) ? $isolate->lab_isolate->cfm_mic_operand  : '' }}{{ isset($isolate->lab_isolate->cfm_mic) ? $isolate->lab_isolate->cfm_mic  : '' }}</td>
-                      <td> {{ isset($isolate->lab_isolate->nal_mic_operand) ? $isolate->lab_isolate->nal_mic_operand  : '' }}{{ isset($isolate->lab_isolate->nal_mic) ? $isolate->lab_isolate->nal_mic  : '' }}</td>
                       <td> {{ isset($isolate->lab_isolate->cro_mic_operand) ? $isolate->lab_isolate->cro_mic_operand  : '' }}{{ isset($isolate->lab_isolate->cro_mic) ? $isolate->lab_isolate->cro_mic  : '' }}</td>
-                      <td> {{ isset($isolate->lab_isolate->spt_mic_operand) ? $isolate->lab_isolate->spt_mic_operand  : '' }}{{ isset($isolate->lab_isolate->spt_mic) ? $isolate->lab_isolate->spt_mic  : '' }}</td>
                       <td>{{ isset($isolate->lab_isolate->cip_mic_operand) ? $isolate->lab_isolate->cip_mic_operand  : '' }}{{ isset($isolate->lab_isolate->cip_mic) ? $isolate->lab_isolate->cip_mic  : '' }}</td>
+                      <td> {{ isset($isolate->lab_isolate->gen_mic_operand) ? $isolate->lab_isolate->gen_mic_operand  : '' }}{{ isset($isolate->lab_isolate->gen_mic) ? $isolate->lab_isolate->gen_mic  : '' }}</td>
+                      <td> {{ isset($isolate->lab_isolate->nal_mic_operand) ? $isolate->lab_isolate->nal_mic_operand  : '' }}{{ isset($isolate->lab_isolate->nal_mic) ? $isolate->lab_isolate->nal_mic  : '' }}</td>
+                      <td> {{ isset($isolate->lab_isolate->spt_mic_operand) ? $isolate->lab_isolate->spt_mic_operand  : '' }}{{ isset($isolate->lab_isolate->spt_mic) ? $isolate->lab_isolate->spt_mic  : '' }}</td>
                       <td>{{ isset($isolate->lab_isolate->tcy_mic_operand) ? $isolate->lab_isolate->tcy_mic_operand  : '' }}{{ isset($isolate->lab_isolate->tcy_mic) ? $isolate->lab_isolate->tcy_mic  : '' }}</td>
 
 
@@ -266,26 +226,14 @@
                     <tr align="center">
                      
                       <td>{{ isset($isolate->lab_isolate->azm_mic_ris) ? $isolate->lab_isolate->azm_mic_ris  : '' }}</td>
-
-                    
-                      <td> {{ isset($isolate->lab_isolate->gen_mic_ris) ? $isolate->lab_isolate->gen_mic_ris  : '' }}</td>
-
-                   
                       <td> {{ isset($isolate->lab_isolate->cfm_mic_ris) ? $isolate->lab_isolate->cfm_mic_ris  : '' }}</td>
-
-                     
-                      <td> {{ isset($isolate->lab_isolate->nal_mic_ris) ? $isolate->lab_isolate->nal_mic_ris  : '' }}</td>
-
-                    
                       <td> {{ isset($isolate->lab_isolate->cro_mic_ris) ? $isolate->lab_isolate->cro_mic_ris  : '' }}</td>
-
-                    
-                      <td> {{ isset($isolate->lab_isolate->spt_mic_ris) ? $isolate->lab_isolate->spt_mic_ris  : '' }}</td>
-
-                     
                       <td>{{ isset($isolate->lab_isolate->cip_mic_ris) ? $isolate->lab_isolate->cip_mic_ris  : '' }}</td>
 
-                      
+                    
+                      <td> {{ isset($isolate->lab_isolate->gen_mic_ris) ? $isolate->lab_isolate->gen_mic_ris  : '' }}</td>                  
+                      <td> {{ isset($isolate->lab_isolate->nal_mic_ris) ? $isolate->lab_isolate->nal_mic_ris  : '' }}</td>
+                      <td> {{ isset($isolate->lab_isolate->spt_mic_ris) ? $isolate->lab_isolate->spt_mic_ris  : '' }}</td>
                       <td>{{ isset($isolate->lab_isolate->tcy_mic_ris) ? $isolate->lab_isolate->tcy_mic_ris  : '' }}</td>
                     </tr>
 
@@ -572,7 +520,7 @@
                           </tr>
                     </tbody>
                  </table> --}}
-                 <table  class="table table-condensed table-bordered small text-center" style="border: none; font-size: 9px">
+                 <table  class="table table-condensed table-bordered small text-center" style="border: none; font-size: 8px">
                   <tr>
                     <td style="border: none;"></td>
                     <td style="border: none;"></td>
@@ -582,11 +530,11 @@
                   <tr>
                    <td style="border: none;"> </td>
                     <td style="border: none;">Date Released: <br><br> {{ $date_now }} </td>
-                    <td style="border: none;">Verified By: <br><br> Marietta M. Lagrada </td>
+                    <td style="border: none;">Verified By: <br><br> Manuel C. Jamoralin / Marietta M. Lagrada </td>
                     <td style="border: none;">Noted By: <br><br> Sonia B. Sia, MD</td>
                   </tr>
                  </table>
-                 <table style="border: none; font-size: 9px; padding: 1px;">
+                 <table style="border: none; font-size: 8px; padding: 1px;">
                   <tr>
                     <td style="border: none;">Legend : </td>
                     <td style="border: none;"></td>
@@ -628,7 +576,7 @@
                     <td  style="border: none; padding-right: 50px;">-></td>
                     <td  style="border: none; padding-right: 50px;">Nalidixic Acid </td>
 
-                    <td  style="border: none; padding-right: 50px;">TET </td>
+                    <td  style="border: none; padding-right: 50px;">TCY </td>
                     <td  style="border: none; padding-right: 50px;">-></td>
                     <td  style="border: none; padding-right: 50px;">Tetracycline </td>
 
