@@ -53,7 +53,7 @@ class IsolateController extends Controller
         $validated_data = $request->validated();
         
         $created = Isolate::create([
-            'hospital_id' => Auth::user()->hasRole(['admin','Super-Admin']) == true ? $request->hospital_id : Auth::user()->hospital->id ,
+            'hospital_id' => Auth::user()->hasRole(['admin','Super-Admin']) == true ? $request->hospital_id : Auth::user()->personnel->hospital->id ,
             'accession_no' => $validated_data['accession_no'] 
         ]);
 

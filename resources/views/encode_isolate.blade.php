@@ -213,7 +213,7 @@
                 <td>Antibiotic</td>
                 <td>Disk</td>
                 <td>RIS</td>
-                <td>MIC</td>
+                <td colspan="2">MIC</td>
                 <td>RIS</td>
               </tr>
             </thead>
