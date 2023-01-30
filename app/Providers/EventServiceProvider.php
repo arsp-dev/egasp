@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Models\Isolate;
 use App\Models\LaboratoryIsolate;
+use App\Models\ReleaseStatus;
 use App\Models\SiteIsolate;
 use App\Observers\IsolateObserver;
 use App\Observers\LaboratoryIsolateObserver;
+use App\Observers\ReleaseStatusObserver;
 use App\Observers\SiteIsolateObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -36,6 +38,7 @@ class EventServiceProvider extends ServiceProvider
         Isolate::observe(IsolateObserver::class);
         LaboratoryIsolate::observe(LaboratoryIsolateObserver::class);
         SiteIsolate::observe(SiteIsolateObserver::class);
+        ReleaseStatus::observe(ReleaseStatusObserver::class);
     }
 
     /**

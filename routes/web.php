@@ -7,7 +7,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\IsolateController;
 use App\Http\Controllers\LaboratoryIsolateController;
+use App\Http\Controllers\ReleaseStatusController;
 use App\Http\Controllers\SiteIsolateController;
+use App\Models\ReleaseStatus;
 use App\Models\SiteIsolate;
 
 /*
@@ -37,4 +39,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('create-pdf/{isolate_id}',[IsolateController::class,'createPDF']);
     Route::get('create-pdf-site/{isolate_id}',[IsolateController::class,'createPDFSite']);
     Route::post('dev-upload',DevMassImportController::class);
+    Route::resource('release-status',ReleaseStatusController::class);
 });

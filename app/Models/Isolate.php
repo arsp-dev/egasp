@@ -32,4 +32,9 @@ class Isolate extends Model
     {
         return $this->hasOne(LaboratoryIsolate::class);
     }
+
+    public function release_status()
+    {
+        return $this->hasOne(ReleaseStatus::class);
+    }
 }

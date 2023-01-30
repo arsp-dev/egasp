@@ -68,6 +68,7 @@
                 <th>Middle Name</th>
                 <th>Last Name</th>
                 <th>Download</th>
+                <th>A.R.S.R.L. Status</th>
             </tr>
             @else
             <tr>
@@ -77,6 +78,7 @@
                 <th>Middle Name</th>
                 <th>Last Name</th>
                 <th>Download</th>
+                <th>A.R.S.R.L. Status</th>
             </tr>
             @endhasanyrole    
         </thead>
@@ -91,6 +93,11 @@
               <td>{{ $isolate->site_isolate()->exists() ? $isolate->site_isolate->patient_middle_name : '---' }}</td>
               <td>{{ $isolate->site_isolate()->exists() ? $isolate->site_isolate->patient_last_name : '---' }}</td>
               <td> <a href="/create-pdf/{{ $isolate->id }}">Download PDF</a> </td>
+              <td>
+                {!! $isolate->release_status()->exists() ? '<span class="badge bg-success">Encoded and Verified</span>' : '<span class="badge bg-info text-dark">Not yet Verified</span>' !!}
+                
+                
+              </td>
               </tr>
             @endforeach
 
@@ -103,6 +110,9 @@
               <td>{{ $isolate->site_isolate()->exists() ? $isolate->site_isolate->patient_middle_name : '---' }}</td>
               <td>{{ $isolate->site_isolate()->exists() ? $isolate->site_isolate->patient_last_name : '---' }}</td>
               <td> <a href="/create-pdf-site/{{ $isolate->id }}">Download PDF</a> </td>
+              <td>
+                {!! $isolate->release_status()->exists() ? '<span class="badge bg-success">Encoded and Verified</span>' : '<span class="badge bg-info text-dark">Not yet Verified</span>' !!}
+              </td>
               </tr>
             @endforeach
             
@@ -112,7 +122,7 @@
 
 
         </tbody>
-        <tfoot>
+        {{-- <tfoot>
             @hasanyrole('Super-Admin|admin')
             <tr>
                 <th>Accession #</th>
@@ -122,6 +132,7 @@
                 <th>Middle Name</th>
                 <th>Last Name</th>
                 <th>Download</th>
+                <th>ARSP Status</th>
             </tr>
             @else
             <tr>
@@ -131,10 +142,11 @@
                 <th>Middle Name</th>
                 <th>Last Name</th>
                 <th>Download</th>
+                <th>ARSP Status</th>
             </tr>
             @endhasanyrole
           
-        </tfoot>
+        </tfoot> --}}
     </table>
                 </div>
             </div>

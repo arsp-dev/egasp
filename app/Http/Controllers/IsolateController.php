@@ -21,7 +21,7 @@ class IsolateController extends Controller
     public function index()
     {
         if(Auth::user()->hasRole(['admin', 'Super-Admin'])){
-            $isolates = Isolate::with('site_isolate','hospital')->get();
+            $isolates = Isolate::with('site_isolate','hospital','release_status')->get();
             $hospitals = Hospital::where([['id','!=',1],['id','!=',2]])->get();
             return view('all_isolates')->with(['isolates' => $isolates, 'hospitals' => $hospitals]);
         }
@@ -73,7 +73,7 @@ class IsolateController extends Controller
     {
         if(Auth::user()->personnel->hospital_id == $isolate->hospital_id)
         {
-            $isolate = Isolate::where('id',$isolate->id)->with('site_isolate')->first();
+            $isolate = Isolate::where('id',$isolate->id)->with('site_isolate','lab_isolate')->first();
             return view('encode_isolate',compact('isolate'));
         }
 

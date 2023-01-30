@@ -503,11 +503,36 @@
   </div>
 
   <button type="submit" class="btn btn-primary right">Submit</button>
+  <button type="button" class="btn btn-primary right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Release</button>
 </form>
                  
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Release Result</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3>Are you sure you want to release <b>{{ $isolate->accession_no }}</b> result? </h3>
+      </div>
+      <div class="modal-footer">
+        <form action="/release-status" method="POST">
+          @csrf
+        <button type="submit" class="btn btn-primary">Release Result</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <input type="hidden" name="isolate_id" value="{{ $isolate->id }}">
+        <input type="hidden" name="isolate_status" value="released">
+      </form>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection

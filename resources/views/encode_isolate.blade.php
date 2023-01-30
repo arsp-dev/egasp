@@ -89,9 +89,16 @@
     </div>
     </div>
     <div class="row  ">
-    <div class="form-group">
+    <div class="form-group col-md-4">
     <label for="reason_for_referral">Reason for Referral</label>
-    <textarea class="form-control form-control-sm  {{ isset($isolate->site_isolate->reason_for_referral) & $isolate->site_isolate->reason_for_referral != '' ? 'is-valid' : '' }}"  id="reason_for_referral" name="reason_for_referral" rows="2">{{ isset($isolate->site_isolate->reason_for_referral) ? $isolate->site_isolate->reason_for_referral  : '' }}</textarea>
+    {{-- <textarea class="form-control form-control-sm  {{ isset($isolate->site_isolate->reason_for_referral) & $isolate->site_isolate->reason_for_referral != '' ? 'is-valid' : '' }}"  id="reason_for_referral" name="reason_for_referral" rows="2">{{ isset($isolate->site_isolate->reason_for_referral) ? $isolate->site_isolate->reason_for_referral  : '' }}</textarea> --}}
+    <select class=" form-select form-select-sm   {{ isset($isolate->site_isolate->reason_for_referral) & $isolate->site_isolate->reason_for_referral != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="reason_for_referral">
+      <option selected> </option>
+      <option {{ isset($isolate->site_isolate->reason_for_referral) & $isolate->site_isolate->reason_for_referral == 'A' ? 'selected'  : '' }} value="A">A - For confirmation of organism and antimicrobial susceptibility test</option>
+      <option {{ isset($isolate->site_isolate->reason_for_referral) & $isolate->site_isolate->reason_for_referral == 'G' ? 'selected'  : '' }} value="G">G - GARLRN samples</option>
+      <option {{ isset($isolate->site_isolate->reason_for_referral) & $isolate->site_isolate->reason_for_referral == 'O' ? 'selected'  : '' }} value="O">O - Others</option>
+      
+    </select>
     </div>
     </div>
      </div>
@@ -170,7 +177,7 @@
         </div>
     </div>
 
-<div class="card mb-2">
+  <div class="card mb-2">
         <div class="card-header text-white" style="background-color: #198754"><h4>Antimicrobial Susceptibility Test Section</h4></div>
 
         <div class="card-body">   
@@ -467,6 +474,114 @@
     </div>
         </div>
 </div>
+
+@if($isolate->release_status()->exists())
+<div class="card mb-2">
+  <div class="card-header text-white bg-primary"><h4>Antimicrobial Susceptibility Test Section (A.R.S.R.L.)</h4></div>
+
+  <div class="card-body">   
+    <div class="table-responsive">
+      <table class="table table-sm">
+          <tbody>
+            <tr>
+              <td colspan="2">Organism Code: {!! $isolate->lab_isolate->organism_code !!}</td>
+              <td colspan="1">Beta-lactamase: {{ $isolate->lab_isolate->beta_lactamase }}</td>
+              <td colspan="1">Date tested: {{ isset($isolate->lab_isolate->date_of_susceptibility) ? $isolate->site_isolate->date_of_susceptibility->format('m/d/Y') : '' }}</td>
+            </tr>
+     
+            <tr>
+              <th align="center" colspan="4">ANTIMICROBIAL SUSCEPTIBILITY TESTS</th>
+            </tr>
+            <tr>
+              <td colspan="4">
+                  <div class="table-responsive">
+                      <table class="table table-sm align-middle">
+                        <thead>
+                          <tr>
+                            <td>Antibiotic</td>
+                            <td>Disk</td>
+                            <td>RIS</td>
+                            <td>MIC</td>
+                            <td>RIS</td>
+                          </tr>
+                        </thead>
+                        <tbody class="align-middle">
+                          <tr>
+                            <td>Azitromycin</td>
+                            <td >{{ isset($isolate->lab_isolate->azm_disk) ? $isolate->lab_isolate->azm_disk  : '' }}</td>
+                            <td>{{ isset($isolate->lab_isolate->azm_disk_ris) ? $isolate->lab_isolate->azm_disk_ris  : '' }}</td>
+                            <td>{{ isset($isolate->lab_isolate->azm_mic_operand) ? $isolate->lab_isolate->azm_mic_operand  : '' }}{{ isset($isolate->lab_isolate->azm_mic) ? $isolate->lab_isolate->azm_mic  : '' }}</td>
+                            <td>{{ isset($isolate->lab_isolate->azm_mic_ris) ? $isolate->lab_isolate->azm_mic_ris  : '' }}</td>
+                          </tr>
+                          <tr>
+                            <td>Gentamycin</td>
+                            <td> {{ isset($isolate->lab_isolate->gen_disk) ? $isolate->lab_isolate->gen_disk  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->gen_disk_ris) ? $isolate->lab_isolate->gen_disk_ris  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->gen_mic_operand) ? $isolate->lab_isolate->gen_mic_operand  : '' }}{{ isset($isolate->lab_isolate->gen_mic) ? $isolate->lab_isolate->gen_mic  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->gen_mic_ris) ? $isolate->lab_isolate->gen_mic_ris  : '' }}</td>
+                          </tr>
+                          <tr>
+                            <td>Cefixime</td>
+                            <td> {{ isset($isolate->lab_isolate->cfm_disk) ? $isolate->lab_isolate->cfm_disk  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->cfm_disk_ris) ? $isolate->lab_isolate->cfm_disk_ris  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->cfm_mic_operand) ? $isolate->lab_isolate->cfm_mic_operand  : '' }}{{ isset($isolate->lab_isolate->cfm_mic) ? $isolate->lab_isolate->cfm_mic  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->cfm_mic_ris) ? $isolate->lab_isolate->cfm_mic_ris  : '' }}</td>
+                          </tr>
+                          <tr>
+                            <td>Nalidixic Acid</td>
+                            <td> {{ isset($isolate->lab_isolate->nal_disk) ? $isolate->lab_isolate->nal_disk  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->nal_disk_ris) ? $isolate->lab_isolate->nal_disk_ris  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->nal_mic_operand) ? $isolate->lab_isolate->nal_mic_operand  : '' }}{{ isset($isolate->lab_isolate->nal_mic) ? $isolate->lab_isolate->nal_mic  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->nal_mic_ris) ? $isolate->lab_isolate->nal_mic_ris  : '' }}</td>
+                          </tr>
+                          <tr>
+                            <td>Ceftriaxone</td>
+                            <td> {{ isset($isolate->lab_isolate->cro_disk) ? $isolate->lab_isolate->cro_disk  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->cro_disk_ris) ? $isolate->lab_isolate->cro_disk_ris  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->cro_mic_operand) ? $isolate->lab_isolate->cro_mic_operand  : '' }}{{ isset($isolate->lab_isolate->cro_mic) ? $isolate->lab_isolate->cro_mic  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->cro_mic_ris) ? $isolate->lab_isolate->cro_mic_ris  : '' }}</td>
+                          </tr>
+                          <tr>
+                            <td>Spectinomycin</td>
+                            <td> {{ isset($isolate->lab_isolate->spt_disk) ? $isolate->lab_isolate->spt_disk  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->spt_disk_ris) ? $isolate->lab_isolate->spt_disk_ris  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->spt_mic_operand) ? $isolate->lab_isolate->spt_mic_operand  : '' }}{{ isset($isolate->lab_isolate->spt_mic) ? $isolate->lab_isolate->spt_mic  : '' }}</td>
+                            <td> {{ isset($isolate->lab_isolate->spt_mic_ris) ? $isolate->lab_isolate->spt_mic_ris  : '' }}</td>
+                          </tr>
+                          <tr>
+                            <td>Ciprofloxacin</td>
+                            <td>{{ isset($isolate->lab_isolate->cip_disk) ? $isolate->lab_isolate->cip_disk  : '' }}</td>
+                            <td>{{ isset($isolate->lab_isolate->cip_disk_ris) ? $isolate->lab_isolate->cip_disk_ris  : '' }}</td>
+                            <td>{{ isset($isolate->lab_isolate->cip_mic_operand) ? $isolate->lab_isolate->cip_mic_operand  : '' }}{{ isset($isolate->lab_isolate->cip_mic) ? $isolate->lab_isolate->cip_mic  : '' }}</td>
+                            <td>{{ isset($isolate->lab_isolate->cip_mic_ris) ? $isolate->lab_isolate->cip_mic_ris  : '' }}</td>
+                          </tr>
+                          <tr>
+                            <td>Tetracycline</td>
+                            <td>{{ isset($isolate->lab_isolate->tcy_disk) ? $isolate->lab_isolate->tcy_disk  : '' }}</td>
+                            <td>{{ isset($isolate->lab_isolate->tcy_disk_ris) ? $isolate->lab_isolate->tcy_disk_ris  : '' }}</td>
+                            <td>{{ isset($isolate->lab_isolate->tcy_mic_operand) ? $isolate->lab_isolate->tcy_mic_operand  : '' }}{{ isset($isolate->lab_isolate->tcy_mic) ? $isolate->lab_isolate->tcy_mic  : '' }}</td>
+                            <td>{{ isset($isolate->lab_isolate->tcy_mic_ris) ? $isolate->lab_isolate->tcy_mic_ris  : '' }}</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">Comments: {{ $isolate->lab_isolate->comments }}</td>
+                          </tr>
+                      
+                      
+                        </tbody>
+                      </table>
+                    </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+  </div>
+</div>
+@endif
+
+
+
+
 
 <div class="card mb-2">
   <div class="card-header text-white" style="background-color: #198754"><h4>Laboratory Pernsonnel Section</h4></div>
