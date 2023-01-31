@@ -91,8 +91,8 @@
                       <th colspan="2" style="background-color: #D3D3D3; color: black;">CULTURE RESULT</th>
                       <td colspan="4"><b>Organism({{ $isolate->hospital->hospital_code }}): </b> {!! $isolate->site_isolate->organism_code !!}</td>
                       <td colspan="4">Beta-lactamase ({{ $isolate->hospital->hospital_code }}): {{ $isolate->site_isolate->beta_lactamase }}</td>
-                      <td colspan="4"><b>Organism(ARSP): </b> {!! $isolate->lab_isolate->organism_code !!}</td>
-                      <td colspan="3">Beta-lactamase (ARSP): {{ $isolate->lab_isolate->beta_lactamase }}</td>
+                      <td colspan="4"><b>Organism(ARSRL): </b> {!! $isolate->lab_isolate->organism_code !!}</td>
+                      <td colspan="3">Beta-lactamase (ARSRL): {{ $isolate->lab_isolate->beta_lactamase }}</td>
                      </tr>
                     
                     
@@ -168,7 +168,7 @@
 
                 
                     <tr align="center">
-                      <td colspan="6" rowspan="4" align="center"> Date of Confirmation : {{ isset($isolate->lab_isolate->date_of_susceptibility) ? $isolate->lab_isolate->date_of_susceptibility->format('m/d/Y') : '' }} <br>  <b>ARSP</b> </td>
+                      <td colspan="6" rowspan="4" align="center"> Date of Confirmation : {{ isset($isolate->lab_isolate->date_of_susceptibility) ? $isolate->lab_isolate->date_of_susceptibility->format('m/d/Y') : '' }} <br>  <b>ARSRL</b> </td>
                       <td colspan="3" rowspan="2">Disk (mm)</td>
                       <td >{{ isset($isolate->lab_isolate->azm_disk) ? $isolate->lab_isolate->azm_disk  : '' }}</td>
                       <td> {{ isset($isolate->lab_isolate->cfm_disk) ? $isolate->lab_isolate->cfm_disk  : '' }}</td>

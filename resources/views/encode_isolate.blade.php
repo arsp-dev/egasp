@@ -584,7 +584,7 @@
 
 
 <div class="card mb-2">
-  <div class="card-header text-white" style="background-color: #198754"><h4>Laboratory Pernsonnel Section</h4></div>
+  <div class="card-header text-white" style="background-color: #198754"><h4>Laboratory Personnel Section</h4></div>
 
   <div class="card-body">
     <div class="row mb-2">
