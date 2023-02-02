@@ -486,7 +486,7 @@
             <tr>
               <td colspan="2">Organism Code: {!! $isolate->lab_isolate->organism_code !!}</td>
               <td colspan="1">Beta-lactamase: {{ $isolate->lab_isolate->beta_lactamase }}</td>
-              <td colspan="1">Date tested: {{ isset($isolate->lab_isolate->date_of_susceptibility) ? $isolate->site_isolate->date_of_susceptibility->format('m/d/Y') : '' }}</td>
+              <td colspan="1">Date tested: {{ isset($isolate->lab_isolate->date_of_susceptibility) ? $isolate->lab_isolate->date_of_susceptibility->format('m/d/Y') : '' }}</td>
             </tr>
      
             <tr>
