@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-    <title>{{ $isolate->accession_no }} - {!! \Carbon\Carbon::now()->toDayDateTimeString() !!}</title>
+    <title>{{ $isolate->accession_no }} - {!! \Carbon\Carbon::now()->timezone('Asia/Manila')->toDayDateTimeString() !!}</title>
     <style>
         .page_break { page-break-before: always; }
     </style>
@@ -98,8 +98,8 @@
                     
                   
                      <tr>
-                      <th colspan="2" style="background-color: #D3D3D3; color: black; font-size: 6px;">ANTIMICROBIAL SUSCEPTIBILITY TEST (AST) RESULTS</th>
-                      <th colspan="15"></th>
+                      <th colspan="6" style="background-color: #D3D3D3; color: black;">ANTIMICROBIAL SUSCEPTIBILITY TEST (AST) RESULTS</th>
+                      <th colspan="9"></th>
                     </tr>
                     <tr align="center">
                       <td colspan="6" rowspan="5" align="center"> Date of Testing : {{ isset($isolate->site_isolate->date_of_susceptibility) ? $isolate->site_isolate->date_of_susceptibility->format('m/d/Y') : '' }} <br>  <b>{{ $isolate->hospital->hospital_code }}</b> </td>
@@ -226,10 +226,10 @@
 
                       <tr>
                         <th colspan="2" style="background-color: #D3D3D3; color: black;">LABORATORY PERSONNEL</th>
-                        <td colspan="3">Name of Staff: {{ $isolate->site_isolate->laboratory_personnel }}</td>
+                        <td colspan="5">Name of Staff: {{ $isolate->site_isolate->laboratory_personnel }}</td>
                         <td colspan="4">Email Address: {{ $isolate->site_isolate->laboratory_personnel_email }}</td>
-                        <td colspan="4">Contact Number: {{ $isolate->site_isolate->laboratory_personnel_contact }}</td>
-                        <td colspan="4">Date Accomplished: {{ isset($isolate->site_isolate->date_accomplished) ? $isolate->site_isolate->date_accomplished->format('m/d/Y') : '' }}</td>
+                        <td colspan="3">Contact Number: {{ $isolate->site_isolate->laboratory_personnel_contact }}</td>
+                        <td colspan="3">Date Accomplished: {{ isset($isolate->site_isolate->date_accomplished) ? $isolate->site_isolate->date_accomplished->format('m/d/Y') : '' }}</td>
                       </tr>
                       <tr>
                         <td colspan="17">Notes: {{ $isolate->site_isolate->notes }}</td>

@@ -138,7 +138,7 @@ class IsolateController extends Controller
 
         $pdf = PDF::loadView('pdf.pdf',compact('isolate','date_now'))->setPaper('a4','landscape');
 
-        return $pdf->download($isolate->accession_no . '-' .Carbon::now()->toDayDateTimeString() .  '.pdf');
+        return $pdf->download($isolate->accession_no . '-' .Carbon::now()->timezone('Asia/Manila')->toDayDateTimeString() .  '.pdf');
 
     }
 
