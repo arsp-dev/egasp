@@ -88,18 +88,22 @@
                        {{-- <td colspan="9">Comments (ARSP): {{ $isolate->lab_isolate->comments }}</td> --}}
                      </tr>
                      <tr >
-                      <th colspan="2" style="background-color: #D3D3D3; color: black;">CULTURE RESULT</th>
-                      <td colspan="4"><b>Organism({{ $isolate->hospital->hospital_code }}): </b> {!! $isolate->site_isolate->organism_code !!}</td>
-                      <td colspan="4">Beta-lactamase ({{ $isolate->hospital->hospital_code }}): {{ $isolate->site_isolate->beta_lactamase }}</td>
-                      <td colspan="4"><b>Organism(ARSRL): </b> {!! $isolate->lab_isolate->organism_code !!}</td>
-                      <td colspan="3">Beta-lactamase (ARSRL): {{ $isolate->lab_isolate->beta_lactamase }}</td>
+                      <th rowspan="2" colspan="2" style="background-color: #D3D3D3; color: black;">CULTURE RESULT</th>
+                      <td colspan="8"><b>Organism({{ $isolate->hospital->hospital_code }}): </b> {!! $isolate->site_isolate->organism_code !!}</td>
+                      <td colspan="7">Beta-lactamase ({{ $isolate->hospital->hospital_code }}): {{ $isolate->site_isolate->beta_lactamase }}</td>
+                      {{-- <td colspan="4"><b>Organism(ARSRL): </b> {!! $isolate->lab_isolate->organism_code !!}</td>
+                      <td colspan="3">Beta-lactamase (ARSRL): {{ $isolate->lab_isolate->beta_lactamase }}</td> --}}
+                     </tr>
+                     <tr>
+                      <td colspan="8"><b>Organism(ARSRL): </b> {!! $isolate->lab_isolate->organism_code !!}</td>
+                      <td colspan="7">Beta-lactamase (ARSRL): {{ $isolate->lab_isolate->beta_lactamase }}</td>
                      </tr>
                     
                     
                   
                      <tr>
                       <th colspan="6" style="background-color: #D3D3D3; color: black;">ANTIMICROBIAL SUSCEPTIBILITY TEST (AST) RESULTS</th>
-                      <th colspan="9"></th>
+                      <th colspan="11"></th>
                     </tr>
                     <tr align="center">
                       <td colspan="6" rowspan="5" align="center"> Date of Testing : {{ isset($isolate->site_isolate->date_of_susceptibility) ? $isolate->site_isolate->date_of_susceptibility->format('m/d/Y') : '' }} <br>  <b>{{ $isolate->hospital->hospital_code }}</b> </td>
@@ -224,7 +228,7 @@
                       <td>{{ isset($isolate->lab_isolate->tcy_mic_ris) ? $isolate->lab_isolate->tcy_mic_ris  : '' }}</td>
                     </tr>
 
-                      <tr>
+                      {{-- <tr>
                         <th colspan="2" style="background-color: #D3D3D3; color: black;">LABORATORY PERSONNEL</th>
                         <td colspan="5">Name of Staff: {{ $isolate->site_isolate->laboratory_personnel }}</td>
                         <td colspan="4">Email Address: {{ $isolate->site_isolate->laboratory_personnel_email }}</td>
@@ -234,7 +238,7 @@
                       <tr>
                         <td colspan="17">Notes: {{ $isolate->site_isolate->notes }}</td>
                       </tr>
-                     
+                      --}}
                    </tbody>
                  </table>
           
