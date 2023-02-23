@@ -114,7 +114,7 @@
                       <td>CRO</td>
                 
                       <td>GEN</td>
-                      <td>NAL</td>
+                      <td>NAL*</td>
                       <td>SPT</td>
                       <td>TCY</td>
                     
@@ -294,9 +294,9 @@
         
                   </tr>
                   <tr>
-                    <td  style="border: none; padding-right: 50px;">NAL </td>
+                    <td  style="border: none; padding-right: 50px;">NAL* </td>
                     <td  style="border: none; padding-right: 50px;">-></td>
-                    <td  style="border: none; padding-right: 50px;">Nalidixic Acid </td>
+                    <td  style="border: none; padding-right: 50px;">Nalidixic Acid (disk used in screening for altered quinolone resistance only) </td>
 
                     <td  style="border: none; padding-right: 50px;">TCY </td>
                     <td  style="border: none; padding-right: 50px;">-></td>
@@ -306,6 +306,21 @@
                     <td style="border: none; padding-right: 50px;">SPT</td>
                     <td  style="border: none; padding-right: 50px;">-></td>
                     <td  style="border: none; padding-right: 50px;">Spectinomycin </td>
+               
+                  </tr>
+                  <tr>
+                    <td  style="border: none; padding-right: 50px;"> </td>
+                    <td  style="border: none; padding-right: 50px;"></td>
+                    <td  style="border: none; padding-right: 50px;"></td>
+
+                    <td  style="border: none; padding-right: 50px;"> </td>
+                    <td  style="border: none; padding-right: 50px;"></td>
+                    <td  style="border: none; padding-right: 50px;"> </td>
+
+     
+                    <td style="border: none; padding-right: 50px;">U</td>
+                    <td  style="border: none; padding-right: 50px;">-></td>
+                    <td  style="border: none; padding-right: 50px;">Unknown (No established CLSI guidelines) </td>
                
                   </tr>
                  
