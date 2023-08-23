@@ -822,7 +822,7 @@
                           <option {{ isset($isolate->lab_isolate->tcy_disk_ris) & $isolate->lab_isolate->tcy_disk_ris == 'NS' ? 'selected'  : '' }} value="NS">NS</option>
                         </select></td>
                         <td>
-                          <select disabled class=" form-select form-select-sm {{ isset($isolate->lab_isolate->tcy_mic_operand) & $isolate->lab_isolate->tcy_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="tcy_mic_operand">
+                          <select  class=" form-select form-select-sm {{ isset($isolate->lab_isolate->tcy_mic_operand) & $isolate->lab_isolate->tcy_mic_operand != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="tcy_mic_operand">
                             <option selected> </option>
                             <option {{ isset($isolate->lab_isolate->tcy_mic_operand) & $isolate->lab_isolate->tcy_mic_operand == '>' ? 'selected'  : '' }} value=">">></option>
                             <option {{ isset($isolate->lab_isolate->tcy_mic_operand) & $isolate->lab_isolate->tcy_mic_operand == '<' ? 'selected'  : '' }} value="<"><</option>
@@ -830,9 +830,9 @@
                             <option {{ isset($isolate->lab_isolate->tcy_mic_operand) & $isolate->lab_isolate->tcy_mic_operand == '<=' ? 'selected'  : '' }} value="<="><=</option>
                           </select>
                         </td>
-                        <td><input disabled class="form-control form-control-sm {{ isset($isolate->lab_isolate->tcy_mic) & $isolate->lab_isolate->tcy_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->tcy_mic) ? $isolate->lab_isolate->tcy_mic  : '' }}" type="number" step="any"   name="tcy_mic" id="" autocomplete="off"></td>
+                        <td><input  class="form-control form-control-sm {{ isset($isolate->lab_isolate->tcy_mic) & $isolate->lab_isolate->tcy_mic != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->tcy_mic) ? $isolate->lab_isolate->tcy_mic  : '' }}" type="number" step="any"   name="tcy_mic" id="" autocomplete="off"></td>
                         {{-- <td><input class="form-control form-control-sm {{ isset($isolate->lab_isolate->tcy_mic_ris) & $isolate->lab_isolate->tcy_mic_ris != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->lab_isolate->tcy_mic_ris) ? $isolate->lab_isolate->tcy_mic_ris  : '' }}" type="text" name="tcy_mic_ris" id=""></td> --}}
-                        <td><select disabled class=" form-select form-select-sm {{ isset($isolate->lab_isolate->tcy_mic_ris) & $isolate->lab_isolate->tcy_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="tcy_mic_ris">
+                        <td><select  class=" form-select form-select-sm {{ isset($isolate->lab_isolate->tcy_mic_ris) & $isolate->lab_isolate->tcy_mic_ris != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="tcy_mic_ris">
                           <option selected> </option>
                           <option {{ isset($isolate->lab_isolate->tcy_mic_ris) & $isolate->lab_isolate->tcy_mic_ris == 'R' ? 'selected'  : '' }} value="R">R</option>
                           <option {{ isset($isolate->lab_isolate->tcy_mic_ris) & $isolate->lab_isolate->tcy_mic_ris == 'I' ? 'selected'  : '' }} value="I">I</option>
