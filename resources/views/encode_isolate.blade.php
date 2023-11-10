@@ -29,29 +29,38 @@
       <input type="hidden" name="isolate_id" value="{{ $isolate->id }}">
     </div>
 
-    <div class="form-group col-md-4">
+    <div class="qc form-group col-md-4">
       <label for="referral_date">Referral Date</label>
-      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->referral_date) & $isolate->site_isolate->referral_date != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->referral_date) ? $isolate->site_isolate->referral_date->toDateString()  : '' }}" id="referral_date" name="referral_date" placeholder="Date of Birth (e.g. mm/dd/yyyy)" autocomplete="off">
+      <input type="date" class="qc form-control form-control-sm {{ isset($isolate->site_isolate->referral_date) & $isolate->site_isolate->referral_date != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->referral_date) ? $isolate->site_isolate->referral_date->toDateString()  : '' }}" id="referral_date" name="referral_date" placeholder="Date of Birth (e.g. mm/dd/yyyy)" autocomplete="off">
     </div>
+
+    <div class="form-group col-md-4">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="qc_chk" {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code == 'atcc49226' ? 'checked'  : '' }}>
+        <label class="form-check-label" for="qc_chk">QC Isolate</label>
+      </div>
+    </div>
+
+
     </div>
     
 
     <div class="row mb-2">
     <div class="form-group col-md-4">
       <label for="patient_id">UIC/Patient ID</label>
-      <input type="text" class="form-control form-control-sm {{ isset($isolate->site_isolate->patient_id) & $isolate->site_isolate->patient_id != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_id) ? $isolate->site_isolate->patient_id  : '' }}" id="patient_id" name="patient_id" placeholder="UIC/Patient ID" autocomplete="off">
+      <input type="text" class="qc form-control form-control-sm {{ isset($isolate->site_isolate->patient_id) & $isolate->site_isolate->patient_id != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_id) ? $isolate->site_isolate->patient_id  : '' }}" id="patient_id" name="patient_id" placeholder="UIC/Patient ID" autocomplete="off">
     </div>
     <div class="form-group col-md-4">
       <label for="patient_date_of_birth">Date of Birth</label>
-      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->patient_date_of_birth) & $isolate->site_isolate->patient_date_of_birth != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_date_of_birth) ? $isolate->site_isolate->patient_date_of_birth->toDateString()  : '' }}" id="patient_date_of_birth" name="patient_date_of_birth" placeholder="Date of Birth (e.g. mm/dd/yyyy)" autocomplete="off">
+      <input type="date" class="qc form-control form-control-sm {{ isset($isolate->site_isolate->patient_date_of_birth) & $isolate->site_isolate->patient_date_of_birth != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_date_of_birth) ? $isolate->site_isolate->patient_date_of_birth->toDateString()  : '' }}" id="patient_date_of_birth" name="patient_date_of_birth" placeholder="Date of Birth (e.g. mm/dd/yyyy)" autocomplete="off">
     </div>
     <div class="form-group col-md-2">
       <label for="patient_age">Age</label>
-      <input type="text" class="form-control form-control-sm {{ isset($isolate->site_isolate->patient_age) & $isolate->site_isolate->patient_age != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_age) ? $isolate->site_isolate->patient_age  : '' }}" id="patient_age" name="patient_age" placeholder="UIC/Patient ID" autocomplete="off">
+      <input type="text" class="qc form-control form-control-sm {{ isset($isolate->site_isolate->patient_age) & $isolate->site_isolate->patient_age != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_age) ? $isolate->site_isolate->patient_age  : '' }}" id="patient_age" name="patient_age" placeholder="UIC/Patient ID" autocomplete="off">
     </div>
     <div class="form-group col-md-2">
       <label for="patient_sex">Sex</label>
-      <select class=" form-select form-select-sm   {{ isset($isolate->site_isolate->patient_sex) & $isolate->site_isolate->patient_sex != '' ? 'is-valid' : '' }}" aria-label=".form-select-lg example" name="patient_sex">
+      <select class="qc form-select form-select-sm   {{ isset($isolate->site_isolate->patient_sex) & $isolate->site_isolate->patient_sex != '' ? 'is-valid' : '' }}" aria-label=".form-select-lg example" name="patient_sex">
         <option selected> </option>
         <option {{ isset($isolate->site_isolate->patient_sex) & $isolate->site_isolate->patient_sex == 'M' ? 'selected'  : '' }} value="M">M</option>
         <option {{ isset($isolate->site_isolate->patient_sex) & $isolate->site_isolate->patient_sex == 'F' ? 'selected'  : '' }} value="F">F</option>
@@ -61,15 +70,15 @@
     <div class="row mb-2">
     <div class="form-group col-md-4  ">
       <label for="first_name">Patient Name</label>
-      <input type="text" class="form-control form-control-sm {{ isset($isolate->site_isolate->patient_first_name) & $isolate->site_isolate->patient_first_name != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_first_name) ? $isolate->site_isolate->patient_first_name  : '' }}" id="first_name" name="patient_first_name" placeholder="First name" autocomplete="off">
+      <input type="text" class="qc form-control form-control-sm {{ isset($isolate->site_isolate->patient_first_name) & $isolate->site_isolate->patient_first_name != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_first_name) ? $isolate->site_isolate->patient_first_name  : '' }}" id="first_name" name="patient_first_name" placeholder="First name" autocomplete="off">
     </div>
     <div class="form-group col-md-4  ">
       <label for="middle_name"> </label>
-      <input type="text" class="form-control form-control-sm {{ isset($isolate->site_isolate->patient_middle_name) & $isolate->site_isolate->patient_middle_name != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_middle_name) ? $isolate->site_isolate->patient_middle_name  : '' }}" id="middle_name" name="patient_middle_name" placeholder="Middle name" autocomplete="off">
+      <input type="text" class="qc form-control form-control-sm {{ isset($isolate->site_isolate->patient_middle_name) & $isolate->site_isolate->patient_middle_name != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_middle_name) ? $isolate->site_isolate->patient_middle_name  : '' }}" id="middle_name" name="patient_middle_name" placeholder="Middle name" autocomplete="off">
     </div>
     <div class="form-group col-md-4  ">
       <label for="last_name"> </label>
-      <input type="text" class="form-control form-control-sm {{ isset($isolate->site_isolate->patient_last_name) & $isolate->site_isolate->patient_last_name != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_last_name) ? $isolate->site_isolate->patient_last_name  : '' }}" id="last_name" name="patient_last_name" placeholder="Last name" autocomplete="off">
+      <input type="text" class="qc form-control form-control-sm {{ isset($isolate->site_isolate->patient_last_name) & $isolate->site_isolate->patient_last_name != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->patient_last_name) ? $isolate->site_isolate->patient_last_name  : '' }}" id="last_name" name="patient_last_name" placeholder="Last name" autocomplete="off">
     </div>
     </div>
  
@@ -77,22 +86,22 @@
     <div class="row mb-2">
     <div class="form-group col-md-4  ">
       <label for="anatomic_collection">Anatomic Site of Collection</label>
-      <input type="text" class="form-control form-control-sm {{ isset($isolate->site_isolate->anatomic_collection) & $isolate->site_isolate->anatomic_collection != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->anatomic_collection) ? $isolate->site_isolate->anatomic_collection  : '' }}" id="anatomic_collection" name="anatomic_collection" placeholder="Anatomic Site of Collection" autocomplete="off">
+      <input type="text" class="qc form-control form-control-sm {{ isset($isolate->site_isolate->anatomic_collection) & $isolate->site_isolate->anatomic_collection != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->anatomic_collection) ? $isolate->site_isolate->anatomic_collection  : '' }}" id="anatomic_collection" name="anatomic_collection" placeholder="Anatomic Site of Collection" autocomplete="off">
     </div>
     <div class="form-group col-md-4  ">
       <label for="date_collection">Date of Collection</label>
-      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->date_of_collection) & $isolate->site_isolate->date_of_collection != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->date_of_collection) ? $isolate->site_isolate->date_of_collection->toDateString()  : '' }}" id="date_collection" name="date_of_collection" placeholder="Date of Collection (e.g. mm/dd/yyyy)" autocomplete="off">
+      <input type="date" class="qc form-control form-control-sm {{ isset($isolate->site_isolate->date_of_collection) & $isolate->site_isolate->date_of_collection != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->date_of_collection) ? $isolate->site_isolate->date_of_collection->toDateString()  : '' }}" id="date_collection" name="date_of_collection" placeholder="Date of Collection (e.g. mm/dd/yyyy)" autocomplete="off">
     </div>
     <div class="form-group col-md-4  ">
       <label for="date_received">Date received in lab</label>
-      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->date_received_lab) & $isolate->site_isolate->date_received_lab != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->date_received_lab) ? $isolate->site_isolate->date_received_lab->toDateString()  : '' }}" id="date_received" name="date_received_lab" placeholder="Date Received in lab (e.g. mm/dd/yyyy)" autocomplete="off">
+      <input type="date" class="qc form-control form-control-sm {{ isset($isolate->site_isolate->date_received_lab) & $isolate->site_isolate->date_received_lab != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->date_received_lab) ? $isolate->site_isolate->date_received_lab->toDateString()  : '' }}" id="date_received" name="date_received_lab" placeholder="Date Received in lab (e.g. mm/dd/yyyy)" autocomplete="off">
     </div>
     </div>
     <div class="row  ">
     <div class="form-group col-md-4">
     <label for="reason_for_referral">Reason for Referral</label>
     {{-- <textarea class="form-control form-control-sm  {{ isset($isolate->site_isolate->reason_for_referral) & $isolate->site_isolate->reason_for_referral != '' ? 'is-valid' : '' }}"  id="reason_for_referral" name="reason_for_referral" rows="2">{{ isset($isolate->site_isolate->reason_for_referral) ? $isolate->site_isolate->reason_for_referral  : '' }}</textarea> --}}
-    <select class=" form-select form-select-sm   {{ isset($isolate->site_isolate->reason_for_referral) & $isolate->site_isolate->reason_for_referral != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="reason_for_referral">
+    <select class="qc form-select form-select-sm   {{ isset($isolate->site_isolate->reason_for_referral) & $isolate->site_isolate->reason_for_referral != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="reason_for_referral">
       <option selected> </option>
       <option {{ isset($isolate->site_isolate->reason_for_referral) & $isolate->site_isolate->reason_for_referral == 'A' ? 'selected'  : '' }} value="A">A - For confirmation of organism and antimicrobial susceptibility test</option>
       <option {{ isset($isolate->site_isolate->reason_for_referral) & $isolate->site_isolate->reason_for_referral == 'G' ? 'selected'  : '' }} value="G">G - GARLRN samples</option>
@@ -113,12 +122,12 @@
    <div class="row mb-2">
    <div class="form-group col-md-2  ">
       <label for="date_received">Date of Test</label>
-      <input type="date" class="form-control form-control-sm {{ isset($isolate->site_isolate->date_of_test) & $isolate->site_isolate->date_of_test != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->date_of_test) ? $isolate->site_isolate->date_of_test->toDateString()  : '' }}" id="date_test" name="date_of_test" placeholder="Date of Test (e.g. mm/dd/yyyy)" autocomplete="off">
+      <input type="date" class="qc form-control form-control-sm {{ isset($isolate->site_isolate->date_of_test) & $isolate->site_isolate->date_of_test != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->date_of_test) ? $isolate->site_isolate->date_of_test->toDateString()  : '' }}" id="date_test" name="date_of_test" placeholder="Date of Test (e.g. mm/dd/yyyy)" autocomplete="off">
     </div>
     <div class="form-group col-md-2  ">
       <label for="pus_cells">Pus Cells</label>
       {{-- <input type="text" class="form-control form-control-sm {{ isset($isolate->site_isolate->pus_cells) & $isolate->site_isolate->pus_cells != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->pus_cells) ? $isolate->site_isolate->pus_cells  : '' }}" id="pus_cells" name="pus_cells" placeholder="Pus Cells"> --}}
-      <select class=" form-select form-select-sm   {{ isset($isolate->site_isolate->pus_cells) & $isolate->site_isolate->pus_cells != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="pus_cells">
+      <select class="qc form-select form-select-sm   {{ isset($isolate->site_isolate->pus_cells) & $isolate->site_isolate->pus_cells != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="pus_cells">
         <option selected> </option>
         <option {{ isset($isolate->site_isolate->pus_cells) & $isolate->site_isolate->pus_cells == 'negative' ? 'selected'  : '' }} value="negative">Negative</option>
         <option {{ isset($isolate->site_isolate->pus_cells) & $isolate->site_isolate->pus_cells == 'rare' ? 'selected'  : '' }} value="rare">Rare</option>
@@ -131,7 +140,7 @@
     <div class="form-group col-md-2  ">
       <label for="epithelial_cells">Epithelial Cells</label>
       {{-- <input type="text" class="form-control form-control-sm {{ isset($isolate->site_isolate->epi_cells) & $isolate->site_isolate->epi_cells != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->epi_cells) ? $isolate->site_isolate->epi_cells  : '' }}" id="epithelial_cells" name="epi_cells" placeholder="Epithelial Cells"> --}}
-      <select class=" form-select form-select-sm   {{ isset($isolate->site_isolate->epi_cells) & $isolate->site_isolate->epi_cells != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="epi_cells">
+      <select class="qc form-select form-select-sm   {{ isset($isolate->site_isolate->epi_cells) & $isolate->site_isolate->epi_cells != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="epi_cells">
         <option selected> </option>
         <option {{ isset($isolate->site_isolate->epi_cells) & $isolate->site_isolate->epi_cells == 'negative' ? 'selected'  : '' }} value="negative">Negative</option>
         <option {{ isset($isolate->site_isolate->epi_cells) & $isolate->site_isolate->epi_cells == 'rare' ? 'selected'  : '' }} value="rare">Rare</option>
@@ -144,7 +153,7 @@
     <div class="form-group col-md-3  ">
       <label for="gram_neg_intracellular"> Gram Negative Intracellular Diplococci</label>
       {{-- <input type="text" class="form-control form-control-sm {{ isset($isolate->site_isolate->intracellular_diplococci) & $isolate->site_isolate->intracellular_diplococci != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->intracellular_diplococci) ? $isolate->site_isolate->intracellular_diplococci  : '' }}" id="gram_neg_intracellular" name="intracellular_diplococci" placeholder="Gram Negative Intracellular Diplococci"> --}}
-      <select class=" form-select form-select-sm   {{ isset($isolate->site_isolate->intracellular_diplococci) & $isolate->site_isolate->intracellular_diplococci != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="intracellular_diplococci">
+      <select class="qc form-select form-select-sm   {{ isset($isolate->site_isolate->intracellular_diplococci) & $isolate->site_isolate->intracellular_diplococci != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="intracellular_diplococci">
         <option selected> </option>
         <option {{ isset($isolate->site_isolate->intracellular_diplococci) & $isolate->site_isolate->intracellular_diplococci == 'negative' ? 'selected'  : '' }} value="negative">Negative</option>
         <option {{ isset($isolate->site_isolate->intracellular_diplococci) & $isolate->site_isolate->intracellular_diplococci == 'rare' ? 'selected'  : '' }} value="rare">Rare</option>
@@ -157,7 +166,7 @@
     <div class="form-group col-md-3  ">
       <label for="gram_neg_extracellular"> Gram Negative Extracellular Diplococci</label>
       {{-- <input type="text" class="form-control form-control-sm {{ isset($isolate->site_isolate->extracellular_diplococci) & $isolate->site_isolate->extracellular_diplococci != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->extracellular_diplococci) ? $isolate->site_isolate->extracellular_diplococci  : '' }}" id="gram_neg_extracellular" name="extracellular_diplococci" placeholder="Gram Negative Extracellular Diplococci"> --}}
-      <select class=" form-select form-select-sm   {{ isset($isolate->site_isolate->extracellular_diplococci) & $isolate->site_isolate->extracellular_diplococci != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="extracellular_diplococci">
+      <select class="qc form-select form-select-sm   {{ isset($isolate->site_isolate->extracellular_diplococci) & $isolate->site_isolate->extracellular_diplococci != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="extracellular_diplococci">
         <option selected> </option>
         <option {{ isset($isolate->site_isolate->extracellular_diplococci) & $isolate->site_isolate->extracellular_diplococci == 'negative' ? 'selected'  : '' }} value="negative">Negative</option>
         <option {{ isset($isolate->site_isolate->extracellular_diplococci) & $isolate->site_isolate->extracellular_diplococci == 'rare' ? 'selected'  : '' }} value="rare">Rare</option>
@@ -171,7 +180,7 @@
    <div class="row  ">
     <div class="form-group">
     <label for="reason_for_referral">Comments</label>
-    <textarea class="form-control form-control-sm  {{ isset($isolate->site_isolate->gram_stain_comment) & $isolate->site_isolate->gram_stain_comment != '' ? 'is-valid' : '' }}"  id="gram_stain_comment" name="gram_stain_comment" rows="2">{{ isset($isolate->site_isolate->gram_stain_comment) ? $isolate->site_isolate->gram_stain_comment  : '' }}</textarea>
+    <textarea class="qc form-control form-control-sm  {{ isset($isolate->site_isolate->gram_stain_comment) & $isolate->site_isolate->gram_stain_comment != '' ? 'is-valid' : '' }}"  id="gram_stain_comment" name="gram_stain_comment" rows="2">{{ isset($isolate->site_isolate->gram_stain_comment) ? $isolate->site_isolate->gram_stain_comment  : '' }}</textarea>
     </div>
     </div>
         </div>
@@ -185,7 +194,7 @@
       <div class="form-group col-md-4">
         <label for="organism_code">Organism Code</label>
         {{-- <input type="text" class="form-control form-control-sm {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code != '' ? 'is-valid' : '' }}" value="{{ isset($isolate->site_isolate->organism_code) ? $isolate->site_isolate->organism_code  : '' }}" id="organism_code" name="organism_code" placeholder="Organism Code"> --}}
-        <select class=" form-select form-select-sm {{ isset($isolate->site_isolate->beta_lactamase) & $isolate->site_isolate->beta_lactamase != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="organism_code" >
+        <select class="qc form-select form-select-sm {{ isset($isolate->site_isolate->beta_lactamase) & $isolate->site_isolate->beta_lactamase != '' ? 'is-valid' : '' }}" aria-label=". form-select form-select-sm-lg example" name="organism_code" id="organism_code">
           <option selected> </option>
           <option {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code == '<i>Neisseria gonorrhoeae</i>' ? 'selected'  : '' }} value="<i>Neisseria gonorrhoeae</i>">ngo</option>
           <option {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code == '<i>Haemophilus influenzae</i>' ? 'selected'  : '' }} value="<i>Haemophilus influenzae</i>">hin</option>
@@ -193,6 +202,7 @@
           <option {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code == '<i>Neisseria meningitidis</i>' ? 'selected'  : '' }} value="<i>Neisseria meningitidis</i>">nme</option>
           <option {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code == 'No Growth' ? 'selected'  : '' }} value="No Growth">xxx</option>
           <option {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code == 'No <i>Neisseria gonorrhoeae</i> found' ? 'selected'  : '' }} value="No <i>Neisseria gonorrhoeae</i> found">xgo</option>
+          <option {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code == 'atcc49226' ? 'selected'  : '' }} value="atcc49226">atcc49226</option>
         </select>
       </div>
       <div class="form-group col-md-4 ">
@@ -636,6 +646,63 @@
                 </div>
             </div>
         </div>
+<script>
+  $(document).ready(function() {
+    if("{!! $isolate->site_isolate->organism_code !!}" == "atcc49226")
+    {
+      document.getElementsByClassName('qc')[0].disabled  = true;
+      document.getElementsByClassName('qc')[1].disabled  = true;
+      document.getElementsByClassName('qc')[2].disabled  = true;
+      document.getElementsByClassName('qc')[3].disabled = true;
+      document.getElementsByClassName('qc')[4].disabled  = true;
+      document.getElementsByClassName('qc')[5].disabled  = true;
+      document.getElementsByClassName('qc')[6].disabled  = true;
+      document.getElementsByClassName('qc')[7].disabled  = true;
+      document.getElementsByClassName('qc')[8].disabled  = true;
+      document.getElementsByClassName('qc')[9].disabled  = true;
+      document.getElementsByClassName('qc')[10].disabled  = true;
+      document.getElementsByClassName('qc')[11].disabled  = true;
+      document.getElementsByClassName('qc')[12].disabled  = true;
+      document.getElementsByClassName('qc')[13].disabled  = true;
+      document.getElementsByClassName('qc')[14].disabled  = true;
+      document.getElementsByClassName('qc')[15].disabled  = true;
+      document.getElementsByClassName('qc')[16].disabled  = true;
+      document.getElementsByClassName('qc')[17].disabled  = true;
+      document.getElementsByClassName('qc')[18].disabled  = true;
+    }
+   });
+</script>
 
+<script>
+  document.getElementById('qc_chk').onchange = function() {
+    document.getElementsByClassName('qc')[0].disabled  = this.checked;
+    document.getElementsByClassName('qc')[1].disabled  = this.checked;
+    document.getElementsByClassName('qc')[2].disabled  = this.checked;
+    document.getElementsByClassName('qc')[3].disabled = this.checked;
+    document.getElementsByClassName('qc')[4].disabled  = this.checked;
+    document.getElementsByClassName('qc')[5].disabled  = this.checked;
+    document.getElementsByClassName('qc')[6].disabled  = this.checked;
+    document.getElementsByClassName('qc')[7].disabled  = this.checked;
+    document.getElementsByClassName('qc')[8].disabled  = this.checked;
+    document.getElementsByClassName('qc')[9].disabled  = this.checked;
+    document.getElementsByClassName('qc')[10].disabled  = this.checked;
+    document.getElementsByClassName('qc')[11].disabled  = this.checked;
+    document.getElementsByClassName('qc')[12].disabled  = this.checked;
+    document.getElementsByClassName('qc')[13].disabled  = this.checked;
+    document.getElementsByClassName('qc')[14].disabled  = this.checked;
+    document.getElementsByClassName('qc')[15].disabled  = this.checked;
+    document.getElementsByClassName('qc')[16].disabled  = this.checked;
+    document.getElementsByClassName('qc')[17].disabled  = this.checked;
+    document.getElementsByClassName('qc')[18].disabled  = this.checked;
+    if(this.checked){
+      document.getElementById('organism_code').selectedIndex = 7;
+      document.getElementsByClassName('qc')[0].value = ''; 
+      document.getElementsByClassName('qc')[1].value = ''; 
+    }else{
+      document.getElementById('organism_code').selectedIndex = 0;
+    }
+    
+};
+</script>
 
 @endsection
