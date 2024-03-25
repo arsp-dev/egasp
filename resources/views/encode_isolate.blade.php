@@ -201,7 +201,7 @@
           <option {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code == '<i>Haemophilus parainfluenzae</i>' ? 'selected'  : '' }} value="<i>Haemophilus parainfluenzae</i>">hpi</option>
           <option {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code == '<i>Neisseria meningitidis</i>' ? 'selected'  : '' }} value="<i>Neisseria meningitidis</i>">nme</option>
           <option {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code == 'No Growth' ? 'selected'  : '' }} value="No Growth">xxx</option>
-          <option {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code == 'No <i>Neisseria gonorrhoeae</i> found' ? 'selected'  : '' }} value="No <i>Neisseria gonorrhoeae</i> found">xgo</option>
+          <option {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code == 'No <i>Neisseria gonorrhoeae</i> isolated' ? 'selected'  : '' }} value="No <i>Neisseria gonorrhoeae</i> isolated">xgo</option>
           <option {{ isset($isolate->site_isolate->organism_code) & $isolate->site_isolate->organism_code == 'atcc49226' ? 'selected'  : '' }} value="atcc49226">atcc49226</option>
         </select>
       </div>
