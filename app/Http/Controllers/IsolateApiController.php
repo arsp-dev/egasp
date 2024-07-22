@@ -17,8 +17,11 @@ class IsolateApiController extends Controller
     {
         $flattenedData = Isolate::join('site_isolates', 'isolates.id', '=', 'site_isolates.isolate_id')
         ->join('laboratory_isolates', 'isolates.id', '=', 'laboratory_isolates.isolate_id')
+        ->join('hospitals','isolates.hospital_id','=','hospitals.id')
         ->select(
-            'isolates.*',
+            'isolates.accession_no',
+            'hospitals.hospital_code',
+            'hospitals.hospital_name',
             'site_isolates.referral_date',
             'site_isolates.patient_id',
             'site_isolates.patient_first_name',
